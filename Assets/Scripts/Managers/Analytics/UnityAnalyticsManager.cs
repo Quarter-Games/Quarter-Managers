@@ -12,9 +12,9 @@ namespace QuarterAsset
         [SerializeField] private bool _isReady = false;
         override public bool IsReady() => _isReady;
         [SerializeField] GameObject ConsentPopUp;
-        protected override void Awake()
+        internal override void Init()
         {
-            base.Awake();
+            base.Init();
             AwaitForConsent();
         }
         private async void AwaitForConsent()

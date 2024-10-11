@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.Audio;
 using QuarterAsset.SaveSystem;
 using System.Threading.Tasks;
+using Unity.VisualScripting;
 
 namespace QuarterAsset.SoundSystem
 {
@@ -15,17 +16,19 @@ namespace QuarterAsset.SoundSystem
     /// </summary>
     public class SoundManager : SingletonManager<SoundManager>
     {
-        [SerializeField] BasicSaveLoadManager BasicSaveLoadManager;
         public const string VOLUME_PARAM_NAME = "_Volume";
         public List<AudioMixerGroup> MixerGroups;
         public List<AudioSource> Sources;
         private bool isReady = false;
         override public bool IsReady() => isReady;
-        private IEnumerator Start()
+        internal override void Init()
+        {
+            base.Init();
+            StartCoroutine(Initialization());
+        }
+        private IEnumerator Initialization()
         {
             Task loading = Task.Run(LoadSettings);
-            yield return new WaitUntil(() => BasicSaveLoadManager.IsReady());
-            
             yield return new WaitUntil(() => loading.IsCompleted);
             isReady = true;
         }
@@ -46,11 +49,26 @@ namespace QuarterAsset.SoundSystem
             mixer.audioMixer.SetFloat(mixer.name + VOLUME_PARAM_NAME, volume);
         }
 
-        public static void PlayAudio(AudioSettings settings) { if (Instance != null) Instance.PlayTrack(settings); }
-        public static void TurnAudioOff(AudioSettings setting, float time) { if (Instance != null) Instance.TurnTrackOff(setting, time); }
-        public static void TurnMixerOff(AudioSettings settings, float time) { if (Instance != null) Instance.ChangeMixerTo(settings, time); }
+        public static void PlayAudio(AudioSettings settings)
+        {
+            if (Instance != null) Instance.PlayTrack(settings);
+            else LoadFallBackManager().PlayTrack(settings);
+        }
+        public static void TurnAudioOff(AudioSettings setting, float time)
+        {
+            if (Instance != null) Instance.TurnTrackOff(setting, time);
+            else LoadFallBackManager().TurnTrackOff(setting, time);
+        }
+        public static void TurnMixerOff(AudioSettings settings, float time)
+        {
+            if (Instance != null) Instance.ChangeMixerTo(settings, time);
+            else LoadFallBackManager().ChangeMixerTo(settings, time);
+        }
         public static void ChangeVolumeMixer(AudioMixerGroup mixer, float endValue, float time, Func<bool> predicateToReturn = null)
-        { if (Instance != null) Instance.ChangeMixerVolume(mixer, endValue, time, predicateToReturn); }
+        {
+            if (Instance != null) Instance.ChangeMixerVolume(mixer, endValue, time, predicateToReturn);
+            else LoadFallBackManager().ChangeMixerVolume(mixer, endValue, time, predicateToReturn);
+        }
 
         private void PlayTrack(AudioSettings settings)
         {
