@@ -1,0 +1,17 @@
+{
+    "name": "QG.Managers.SoundSystem",
+    "rootNamespace": "QG.Managers.SoundSystem",
+    "references": [
+        "GUID:d888a2820ba200b4fa44056916104282",
+        "GUID:5af7d931534431343b421fead9c3c9cc"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

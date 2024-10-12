@@ -1,0 +1,16 @@
+{
+    "name": "QG.Managers.StateSystem",
+    "rootNamespace": "QG.Managers.StateSystem",
+    "references": [
+        "GUID:d888a2820ba200b4fa44056916104282"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -1,0 +1,18 @@
+{
+    "name": "QG.Managers.Economy.BasicSave",
+    "rootNamespace": "QG.Managers.Economy.BasicSave",
+    "references": [
+        "GUID:a6124051fecfe9c4ea50d79eb05db859",
+        "GUID:5af7d931534431343b421fead9c3c9cc",
+        "GUID:d888a2820ba200b4fa44056916104282"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

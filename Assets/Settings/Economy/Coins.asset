@@ -17,3 +17,4 @@ MonoBehaviour:
   sprite: {fileID: 0}
   StartingAmount: 0
   MaxAmount: 0
+  currencyToAdd: 5
