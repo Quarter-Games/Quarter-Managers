@@ -7,23 +7,19 @@ namespace QuarterAsset.Economy
     {
         public event System.Action<Currency, float> OnCurrencyChanged;
         public string currencyName;
-        [Tooltip("Unique ID for the currency. This is used to reference the currency in code.")]
+        [Tooltip("Unique ID for the currency. If it is changed, currency will be cleared")]
         public string currencyID;
         public Sprite sprite;
-        public float StartingAmount;
+        public int StartingAmount;
         [Tooltip("If Max Amount is equal to Starting Amount, the currency will have no limit.")]
-        public float MaxAmount;
-        private void OnValidate()
-        {
-            currencyID = currencyName.Replace(" ", "_").ToUpper();
-        }
-        public float GetAmount() => EconomyManager.GetCurrencyAmount(this);
-        public void Increment(float amount)
+        public int MaxAmount;
+        public int GetAmount() => EconomyManager.GetCurrencyAmount(this).Result;
+        public void Increment(int amount)
         {
             EconomyManager.IncrementCurrency(this, amount);
             OnCurrencyChanged?.Invoke(this, amount);
         }
-        public void Decrement(float amount)
+        public void Decrement(int amount)
         {
             EconomyManager.DecrementCurrency(this, amount);
             OnCurrencyChanged?.Invoke(this, -amount);
