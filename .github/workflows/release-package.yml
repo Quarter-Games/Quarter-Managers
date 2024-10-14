@@ -31,4 +31,4 @@ jobs:
       - run: npm ci
       - run: npm publish
         env:
-          NODE_AUTH_TOKEN: ${{secrets.CUSTOM_PAT_WITH_WORKFLOWS_ACCESS}}
+          NODE_AUTH_TOKEN: ${{secrets.Release token}}
