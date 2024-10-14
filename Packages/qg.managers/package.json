@@ -15,12 +15,16 @@
   "author": "Dendefo <daniek332@gmail.com> (https://github.com/Dendefo)",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Quarter-Games/Quarter-Managers.git"
+    "url": "git+https://github.com/Quarter-Games/Quarter-Managers.git?path=Packages/qg.managers"
   },
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Quarter-Games/Quarter-Managers/issues"
   },
   "homepage": "https://github.com/Quarter-Games/Quarter-Managers#readme",
-  "hideInEditor": false
+  "hideInEditor": false,
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
 }
