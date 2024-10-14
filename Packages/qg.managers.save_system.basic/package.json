@@ -1,8 +1,8 @@
 {
-  "name": "com.qg.managers",
+  "name": "com.qg.managers.save_system.basic",
   "version": "1.0.0",
-  "displayName": "QG Game Managers",
-  "description": "this is a base manager api",
+  "displayName": "QG Basic Save System",
+  "description": "This is basic save system",
   "unity": "6000.4",
   "documentationUrl": "https://github.com/Quarter-Games/Quarter-Managers",
   "changelogUrl": "https://github.com/Quarter-Games/Quarter-Managers",
@@ -10,7 +10,8 @@
   "keywords": [
     "Tools",
     "Template",
-    "Loading Scree"
+    "Loading Scree",
+    "Save System"
   ],
   "author": "Dendefo <daniek332@gmail.com> (https://github.com/Dendefo)",
   "repository": {
@@ -22,5 +23,8 @@
     "url": "https://github.com/Quarter-Games/Quarter-Managers/issues"
   },
   "homepage": "https://github.com/Quarter-Games/Quarter-Managers#readme",
-  "hideInEditor": false
+  "hideInEditor": false,
+  "dependencies": {
+    "com.qg.managers": "1.0.0"
+  }
 }
