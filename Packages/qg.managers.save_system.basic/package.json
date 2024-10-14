@@ -1,6 +1,6 @@
 {
-  "name": "com.qg.managers.save_system.basic",
-  "version": "1.0.0",
+  "name": "com.qg.manager.save_system.basic",
+  "version": "1.0.1",
   "displayName": "QG Basic Save System",
   "description": "This is basic save system",
   "unity": "6000.4",
@@ -25,6 +25,10 @@
   "homepage": "https://github.com/Quarter-Games/Quarter-Managers#readme",
   "hideInEditor": false,
   "dependencies": {
-    "com.qg.managers": "1.0.0"
+    "com.qg.manager": "1.0.0"
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   }
 }

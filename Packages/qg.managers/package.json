@@ -1,9 +1,9 @@
 {
-  "name": "com.qg.manager",
-  "version": "1.0.1",
+  "name": "quarter-games.manager",
+  "version": "1.0.0",
   "displayName": "QG Game Managers",
   "description": "this is a base manager api",
-  "unity": "2019.1",
+  "unity": "6000.4",
   "documentationUrl": "https://github.com/Quarter-Games/Quarter-Managers",
   "changelogUrl": "https://github.com/Quarter-Games/Quarter-Managers",
   "licensesUrl": "https://github.com/Quarter-Games/Quarter-Managers",
@@ -22,12 +22,5 @@
     "url": "https://github.com/Quarter-Games/Quarter-Managers/issues"
   },
   "homepage": "https://github.com/Quarter-Games/Quarter-Managers#readme",
-  "hideInEditor": false,
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "publishConfig": {
-    "dendefo:registry": "https://npm.pkg.github.com"
-  }
+  "hideInEditor": false
 }
