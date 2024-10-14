@@ -1,5 +1,5 @@
 {
-  "name": "com.qg.managers",
+  "name": "com.qg.manager",
   "version": "1.0.0",
   "displayName": "QG Game Managers",
   "description": "this is a base manager api",
@@ -28,6 +28,6 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "publishConfig": {
-  "dendefo:registry": "https://npm.pkg.github.com"
+    "dendefo:registry": "https://npm.pkg.github.com"
   }
 }
