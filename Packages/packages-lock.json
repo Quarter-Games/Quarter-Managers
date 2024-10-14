@@ -1,5 +1,11 @@
 {
   "dependencies": {
+    "com.quarter_games.managers": {
+      "version": "file:qg.managers",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
     "com.unity.2d.animation": {
       "version": "10.1.1",
       "depth": 1,
