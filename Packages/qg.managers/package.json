@@ -1,21 +1,21 @@
 {
   "name": "com.qg.manager",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "displayName": "QG Game Managers",
   "description": "this is a base manager api",
-  "unity": "6000.4",
+  "unity": "2019.1",
   "documentationUrl": "https://github.com/Quarter-Games/Quarter-Managers",
   "changelogUrl": "https://github.com/Quarter-Games/Quarter-Managers",
   "licensesUrl": "https://github.com/Quarter-Games/Quarter-Managers",
   "keywords": [
     "Tools",
     "Template",
-    "Loading Scree"
+    "Loading Screen"
   ],
   "author": "Dendefo <daniek332@gmail.com> (https://github.com/Dendefo)",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Quarter-Games/Quarter-Managers.git?path=Packages/qg.managers"
+    "url": "git+https://github.com/Quarter-Games/Quarter-Managers.git"
   },
   "license": "ISC",
   "bugs": {
