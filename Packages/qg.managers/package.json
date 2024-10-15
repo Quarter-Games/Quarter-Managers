@@ -1,9 +1,9 @@
 {
   "name": "quarter-games.manager",
-  "version": "1.0.0",
+  "version": "1.0.5",
   "displayName": "QG Game Managers",
   "description": "this is a base manager api",
-  "unity": "6000.4",
+  "unity": "2022.3",
   "documentationUrl": "https://github.com/Quarter-Games/Quarter-Managers",
   "changelogUrl": "https://github.com/Quarter-Games/Quarter-Managers",
   "licensesUrl": "https://github.com/Quarter-Games/Quarter-Managers",

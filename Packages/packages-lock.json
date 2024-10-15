@@ -1,91 +1,11 @@
 {
   "dependencies": {
-    "com.qg.managers": {
-      "version": "file:qg.managers",
-      "depth": 0,
-      "source": "embedded",
-      "dependencies": {}
-    },
-    "com.qg.managers.aanalytics.unity": {
-      "version": "file:qg.managers.analytics.unity",
-      "depth": 0,
-      "source": "embedded",
-      "dependencies": {
-        "com.qg.managers.analytics": "1.0.0",
-        "com.unity.services.analytics": "1.0.0"
-      }
-    },
-    "com.qg.managers.analytics": {
-      "version": "file:qg.managers.analytics",
-      "depth": 0,
-      "source": "embedded",
-      "dependencies": {
-        "com.qg.managers.save_system.basic": "1.0.0"
-      }
-    },
-    "com.qg.managers.economy": {
-      "version": "file:qg.managers.economy",
-      "depth": 0,
-      "source": "embedded",
-      "dependencies": {
-        "com.qg.managers": "1.0.0"
-      }
-    },
-    "com.qg.managers.economy.basic": {
-      "version": "file:qg.managers.economy.basic",
-      "depth": 0,
-      "source": "embedded",
-      "dependencies": {
-        "com.qg.managers.economy": "1.0.0",
-        "com.qg.managers.save_system.basic": "1.0.0"
-      }
-    },
-    "com.qg.managers.save_system.basic": {
-      "version": "file:qg.managers.save_system.basic",
-      "depth": 0,
-      "source": "embedded",
-      "dependencies": {
-        "com.qg.managers": "1.0.0"
-      }
-    },
-    "com.qg.managers.save_system.basic.prefs": {
-      "version": "file:qg.managers.save_system.basic.prefs",
-      "depth": 0,
-      "source": "embedded",
-      "dependencies": {
-        "com.qg.managers.save_system.basic": "1.0.0"
-      }
-    },
-    "com.qg.managers.save_system.file": {
-      "version": "file:qg.managers.save_system.file",
-      "depth": 0,
-      "source": "embedded",
-      "dependencies": {
-        "com.qg.managers": "1.0.0"
-      }
-    },
-    "com.qg.managers.save_system.file.json": {
+    "com.qg.quarter-games.save.file.json": {
       "version": "file:qg.managers.save_system.file.json",
       "depth": 0,
       "source": "embedded",
       "dependencies": {
-        "com.qg.managers.save_system.file": "1.0.0"
-      }
-    },
-    "com.qg.managers.sound": {
-      "version": "file:qg.managers.sound",
-      "depth": 0,
-      "source": "embedded",
-      "dependencies": {
-        "com.qg.managers.save_system.basic": "1.0.0"
-      }
-    },
-    "com.qg.managers.state": {
-      "version": "file:qg.managers.state",
-      "depth": 0,
-      "source": "embedded",
-      "dependencies": {
-        "com.qg.managers": "1.0.0"
+        "quarter-games.save.file": "1.0.0"
       }
     },
     "com.unity.2d.animation": {
@@ -419,6 +339,86 @@
         "com.unity.modules.jsonserialize": "1.0.0"
       },
       "url": "https://packages.unity.com"
+    },
+    "quarter-games.analytics": {
+      "version": "file:qg.managers.analytics",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "quarter-games.save.basic": "1.0.0"
+      }
+    },
+    "quarter-games.analytics.unity": {
+      "version": "file:qg.managers.analytics.unity",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "quarter-games.analytics": "1.0.0",
+        "com.unity.services.analytics": "1.0.0"
+      }
+    },
+    "quarter-games.economy": {
+      "version": "file:qg.managers.economy",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "quarter-games.manager": "1.0.0"
+      }
+    },
+    "quarter-games.economy.basic": {
+      "version": "file:qg.managers.economy.basic",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "quarter-games.economy": "1.0.0",
+        "quarter-games.save.basic": "1.0.0"
+      }
+    },
+    "quarter-games.manager": {
+      "version": "file:qg.managers",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
+    "quarter-games.save.basic": {
+      "version": "file:qg.managers.save_system.basic",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "quarter-games.manager": "1.0.1"
+      }
+    },
+    "quarter-games.save.basic.prefs": {
+      "version": "file:qg.managers.save_system.basic.prefs",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "quarter-games.save.basic": "1.0.0"
+      }
+    },
+    "quarter-games.save.file": {
+      "version": "file:qg.managers.save_system.file",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "quarter-games.manager": "1.0.0"
+      }
+    },
+    "quarter-games.sound": {
+      "version": "file:qg.managers.sound",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "quarter-games.save.basic": "1.0.0"
+      }
+    },
+    "quarter-games.state": {
+      "version": "file:qg.managers.state",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "quarter-games.manager": "1.0.0"
+      }
     },
     "com.unity.modules.accessibility": {
       "version": "1.0.0",

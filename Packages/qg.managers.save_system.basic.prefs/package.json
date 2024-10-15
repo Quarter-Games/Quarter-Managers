@@ -1,16 +1,16 @@
 {
-  "name": "com.qg.managers.save_system.basic.prefs",
+  "name": "quarter-games.save.basic.prefs",
   "version": "1.0.0",
   "displayName": "QG Basic Prefs Save System",
   "description": "This is basic save system",
-  "unity": "6000.4",
+  "unity": "2022.3",
   "documentationUrl": "https://github.com/Quarter-Games/Quarter-Managers",
   "changelogUrl": "https://github.com/Quarter-Games/Quarter-Managers",
   "licensesUrl": "https://github.com/Quarter-Games/Quarter-Managers",
   "keywords": [
     "Tools",
     "Template",
-    "Loading Scree",
+    "Loading Screen",
     "Save System"
   ],
   "author": "Dendefo <daniek332@gmail.com> (https://github.com/Dendefo)",
@@ -25,6 +25,6 @@
   "homepage": "https://github.com/Quarter-Games/Quarter-Managers#readme",
   "hideInEditor": false,
   "dependencies": {
-    "com.qg.managers.save_system.basic": "1.0.0"
+    "quarter-games.save.basic": "1.0.0"
   }
 }

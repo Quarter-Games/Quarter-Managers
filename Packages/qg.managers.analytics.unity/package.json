@@ -1,9 +1,9 @@
 {
-  "name": "com.qg.managers.aanalytics.unity",
+  "name": "quarter-games.analytics.unity",
   "version": "1.0.0",
   "displayName": "QG Unity Analytics",
-  "description": "This is basic save system",
-  "unity": "6000.4",
+  "description": "This is analytics manager for unity analytics",
+  "unity": "2022.3",
   "documentationUrl": "https://github.com/Quarter-Games/Quarter-Managers",
   "changelogUrl": "https://github.com/Quarter-Games/Quarter-Managers",
   "licensesUrl": "https://github.com/Quarter-Games/Quarter-Managers",
@@ -25,7 +25,7 @@
   "homepage": "https://github.com/Quarter-Games/Quarter-Managers#readme",
   "hideInEditor": false,
   "dependencies": {
-    "com.qg.managers.analytics": "1.0.0",
+    "quarter-games.analytics": "1.0.0",
     "com.unity.services.analytics": "1.0.0"
   }
 }
