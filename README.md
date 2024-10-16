@@ -1,7 +1,10 @@
 # Description
 This is a list of Quarter games managers, that are developed to provide more easy-to-use API to start small unity projects.
-They are divided into packages and can be found at npm package registry with scope 
-``` com.quarter-games ```
+They are divided into packages and can be found at NPM package registry
+
+NPM package link for using in unity PM: `https://registry.npmjs.com/`
+scope to provide in unity PM: `com.quarter-games`
+
 For more information about installing a packages, please refer to 
 [Unity documentation](https://docs.unity3d.com/6000.0/Documentation/Manual/upm-scoped.html)
 [Me at discord](https://discord.com/channels/157206617417449473)
@@ -43,6 +46,7 @@ com.quarter-games.save.file.json
 JSON local implementation of File Save system
 
 **IMPORTANT**
+
 Requires installation of unity registry package: 
 `com.unity.nuget.newtonsoft-json`
 
@@ -64,11 +68,15 @@ com.quarter-games.analytics
 ```
 Base class for analytics mnagers. Requires player consent to start collecting the data.
 Uses Basic Save system to save player consent status.
+
 For further information about player consent, refer to 
+
 [Legal info about GDPR]([url](https://gdpr-info.eu/issues/consent/))
+
 [Unity Page about privacy policy in their package](https://docs.unity.com/ugs/en-us/manual/analytics/manual/privacy-overview)
 
 **IMPORTANT**
+
 Requires installation of unity registry package: 
 `com.unity.services.analytics`
 
