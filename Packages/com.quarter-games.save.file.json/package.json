@@ -1,8 +1,8 @@
 {
-  "name": "quarter-games.analytics",
-  "version": "1.0.0",
-  "displayName": "QG Analytics",
-  "description": "This is API for analytics manager",
+  "name": "com.quarter-games.save.file.json",
+  "version": "1.0.2",
+  "displayName": "QG JSON File Save System",
+  "description": "This is file save system implementation for saving localy into json files /n First you need to install com.unity.nuget.newtonsoft-json dependency from unity registry",
   "unity": "2022.3",
   "documentationUrl": "https://github.com/Quarter-Games/Quarter-Managers",
   "changelogUrl": "https://github.com/Quarter-Games/Quarter-Managers",
@@ -11,7 +11,7 @@
     "Tools",
     "Template",
     "Loading Screen",
-    "Game Analytics"
+    "Save System"
   ],
   "author": "Dendefo <daniek332@gmail.com> (https://github.com/Dendefo)",
   "repository": {
@@ -25,6 +25,7 @@
   "homepage": "https://github.com/Quarter-Games/Quarter-Managers#readme",
   "hideInEditor": false,
   "dependencies": {
-    "quarter-games.save.basic": "1.0.0"
+    "com.quarter-games.save.file": "1.0.0",
+    "com.unity.nuget.newtonsoft-json":"3.0.0"
   }
 }

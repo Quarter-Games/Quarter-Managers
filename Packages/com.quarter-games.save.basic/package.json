@@ -1,8 +1,8 @@
 {
-  "name": "quarter-games.state",
-  "version": "1.0.0",
-  "displayName": "QG State",
-  "description": "This is state and time system",
+  "name": "com.quarter-games.save.basic",
+  "version": "1.0.1",
+  "displayName": "QG Basic Save System",
+  "description": "This is basic save system",
   "unity": "2022.3",
   "documentationUrl": "https://github.com/Quarter-Games/Quarter-Managers",
   "changelogUrl": "https://github.com/Quarter-Games/Quarter-Managers",
@@ -11,8 +11,7 @@
     "Tools",
     "Template",
     "Loading Scree",
-    "Time System",
-    "State Manager"
+    "Save System"
   ],
   "author": "Dendefo <daniek332@gmail.com> (https://github.com/Dendefo)",
   "repository": {
@@ -26,6 +25,6 @@
   "homepage": "https://github.com/Quarter-Games/Quarter-Managers#readme",
   "hideInEditor": false,
   "dependencies": {
-    "quarter-games.manager": "1.0.0"
+    "com.quarter-games.manager": "1.0.0"
   }
 }

@@ -1,8 +1,8 @@
 {
-  "name": "quarter-games.economy",
-  "version": "1.0.0",
-  "displayName": "QG Economy",
-  "description": "This is basic economy system",
+  "name": "com.quarter-games.analytics.unity",
+  "version": "1.0.1",
+  "displayName": "QG Unity Analytics",
+  "description": "This is analytics manager for unity analytics. First you need to install com.unity.services.analytics from unity registry ",
   "unity": "2022.3",
   "documentationUrl": "https://github.com/Quarter-Games/Quarter-Managers",
   "changelogUrl": "https://github.com/Quarter-Games/Quarter-Managers",
@@ -10,8 +10,9 @@
   "keywords": [
     "Tools",
     "Template",
-    "Loading Scree",
-    "Game Economy"
+    "Loading Screen",
+    "Game Analytics",
+    "Unity"
   ],
   "author": "Dendefo <daniek332@gmail.com> (https://github.com/Dendefo)",
   "repository": {
@@ -25,6 +26,7 @@
   "homepage": "https://github.com/Quarter-Games/Quarter-Managers#readme",
   "hideInEditor": false,
   "dependencies": {
-    "quarter-games.manager": "1.0.0"
+    "com.quarter-games.analytics": "1.0.0",
+    "com.unity.services.analytics": "6.0.0"
   }
 }

@@ -1,8 +1,8 @@
 {
-  "name": "quarter-games.analytics.unity",
+  "name": "com.quarter-games.state",
   "version": "1.0.0",
-  "displayName": "QG Unity Analytics",
-  "description": "This is analytics manager for unity analytics",
+  "displayName": "QG State",
+  "description": "This is state and time system",
   "unity": "2022.3",
   "documentationUrl": "https://github.com/Quarter-Games/Quarter-Managers",
   "changelogUrl": "https://github.com/Quarter-Games/Quarter-Managers",
@@ -11,7 +11,8 @@
     "Tools",
     "Template",
     "Loading Scree",
-    "Save System"
+    "Time System",
+    "State Manager"
   ],
   "author": "Dendefo <daniek332@gmail.com> (https://github.com/Dendefo)",
   "repository": {
@@ -25,7 +26,6 @@
   "homepage": "https://github.com/Quarter-Games/Quarter-Managers#readme",
   "hideInEditor": false,
   "dependencies": {
-    "quarter-games.analytics": "1.0.0",
-    "com.unity.services.analytics": "1.0.0"
+    "com.quarter-games.manager": "1.0.0"
   }
 }

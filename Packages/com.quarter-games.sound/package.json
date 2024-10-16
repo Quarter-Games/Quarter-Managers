@@ -1,8 +1,8 @@
 {
-  "name": "quarter-games.save.basic",
+  "name": "com.quarter-games.sound",
   "version": "1.0.0",
-  "displayName": "QG Basic Save System",
-  "description": "This is basic save system",
+  "displayName": "QG Sound",
+  "description": "This is easy to use sound manager",
   "unity": "2022.3",
   "documentationUrl": "https://github.com/Quarter-Games/Quarter-Managers",
   "changelogUrl": "https://github.com/Quarter-Games/Quarter-Managers",
@@ -11,7 +11,7 @@
     "Tools",
     "Template",
     "Loading Scree",
-    "Save System"
+    "Sound"
   ],
   "author": "Dendefo <daniek332@gmail.com> (https://github.com/Dendefo)",
   "repository": {
@@ -25,6 +25,6 @@
   "homepage": "https://github.com/Quarter-Games/Quarter-Managers#readme",
   "hideInEditor": false,
   "dependencies": {
-    "quarter-games.manager": "1.0.1"
+    "com.quarter-games.save.basic": "1.0.0"
   }
 }

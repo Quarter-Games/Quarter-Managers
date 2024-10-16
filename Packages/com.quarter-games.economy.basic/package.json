@@ -1,5 +1,5 @@
 {
-  "name": "quarter-games.economy.basic",
+  "name": "com.quarter-games.economy.basic",
   "version": "1.0.0",
   "displayName": "QG Economy Basic",
   "description": "This is economy system based on basic save system for saving the data",
@@ -25,7 +25,7 @@
   "homepage": "https://github.com/Quarter-Games/Quarter-Managers#readme",
   "hideInEditor": false,
   "dependencies": {
-    "quarter-games.economy": "1.0.0",
-    "quarter-games.save.basic": "1.0.0"
+    "com.quarter-games.economy": "1.0.0",
+    "com.quarter-games.save.basic": "1.0.0"
   }
 }

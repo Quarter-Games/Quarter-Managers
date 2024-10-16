@@ -1,8 +1,8 @@
 {
-  "name": "quarter-games.save.basic.prefs",
+  "name": "com.quarter-games.analytics",
   "version": "1.0.0",
-  "displayName": "QG Basic Prefs Save System",
-  "description": "This is basic save system",
+  "displayName": "QG Analytics",
+  "description": "This is API for analytics manager",
   "unity": "2022.3",
   "documentationUrl": "https://github.com/Quarter-Games/Quarter-Managers",
   "changelogUrl": "https://github.com/Quarter-Games/Quarter-Managers",
@@ -11,7 +11,7 @@
     "Tools",
     "Template",
     "Loading Screen",
-    "Save System"
+    "Game Analytics"
   ],
   "author": "Dendefo <daniek332@gmail.com> (https://github.com/Dendefo)",
   "repository": {
@@ -25,6 +25,6 @@
   "homepage": "https://github.com/Quarter-Games/Quarter-Managers#readme",
   "hideInEditor": false,
   "dependencies": {
-    "quarter-games.save.basic": "1.0.0"
+    "com.quarter-games.save.basic": "1.0.0"
   }
 }

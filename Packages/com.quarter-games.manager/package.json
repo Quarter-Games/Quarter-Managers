@@ -1,8 +1,8 @@
 {
-  "name": "quarter-games.sound",
-  "version": "1.0.0",
-  "displayName": "QG Sound",
-  "description": "This is easy to use sound manager",
+  "name": "com.quarter-games.manager",
+  "version": "1.0.1",
+  "displayName": "QG Game Managers",
+  "description": "this is a base manager api",
   "unity": "2022.3",
   "documentationUrl": "https://github.com/Quarter-Games/Quarter-Managers",
   "changelogUrl": "https://github.com/Quarter-Games/Quarter-Managers",
@@ -10,8 +10,7 @@
   "keywords": [
     "Tools",
     "Template",
-    "Loading Scree",
-    "Sound"
+    "Loading Screen"
   ],
   "author": "Dendefo <daniek332@gmail.com> (https://github.com/Dendefo)",
   "repository": {
@@ -23,8 +22,5 @@
     "url": "https://github.com/Quarter-Games/Quarter-Managers/issues"
   },
   "homepage": "https://github.com/Quarter-Games/Quarter-Managers#readme",
-  "hideInEditor": false,
-  "dependencies": {
-    "quarter-games.save.basic": "1.0.0"
-  }
+  "hideInEditor": false
 }

@@ -1,8 +1,8 @@
 {
-  "name": "quarter-games.manager",
-  "version": "1.0.5",
-  "displayName": "QG Game Managers",
-  "description": "this is a base manager api",
+  "name": "com.quarter-games.economy",
+  "version": "1.0.0",
+  "displayName": "QG Economy",
+  "description": "This is basic economy system",
   "unity": "2022.3",
   "documentationUrl": "https://github.com/Quarter-Games/Quarter-Managers",
   "changelogUrl": "https://github.com/Quarter-Games/Quarter-Managers",
@@ -10,7 +10,8 @@
   "keywords": [
     "Tools",
     "Template",
-    "Loading Screen"
+    "Loading Scree",
+    "Game Economy"
   ],
   "author": "Dendefo <daniek332@gmail.com> (https://github.com/Dendefo)",
   "repository": {
@@ -22,5 +23,8 @@
     "url": "https://github.com/Quarter-Games/Quarter-Managers/issues"
   },
   "homepage": "https://github.com/Quarter-Games/Quarter-Managers#readme",
-  "hideInEditor": false
+  "hideInEditor": false,
+  "dependencies": {
+    "com.quarter-games.manager": "1.0.0"
+  }
 }
