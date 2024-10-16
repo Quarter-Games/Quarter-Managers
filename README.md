@@ -41,7 +41,8 @@ com.quarter-games.save.file
 com.quarter-games.save.file.json
 ```
 JSON local implementation of File Save system
-** IMPORTANT **
+
+**IMPORTANT**
 Requires installation of unity registry package: 
 `com.unity.nuget.newtonsoft-json`
 
@@ -66,7 +67,8 @@ Uses Basic Save system to save player consent status.
 For further information about player consent, refer to 
 [Legal info about GDPR]([url](https://gdpr-info.eu/issues/consent/))
 [Unity Page about privacy policy in their package](https://docs.unity.com/ugs/en-us/manual/analytics/manual/privacy-overview)
-** IMPORTANT **
+
+**IMPORTANT**
 Requires installation of unity registry package: 
 `com.unity.services.analytics`
 
