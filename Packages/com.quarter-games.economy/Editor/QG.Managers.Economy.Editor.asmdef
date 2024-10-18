@@ -1,0 +1,16 @@
+{
+    "name": "QG.Managers.Economy.Editor",
+    "rootNamespace": "QG.Managers.Economy.Editor",
+    "references": [
+        "GUID:a6124051fecfe9c4ea50d79eb05db859"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -6,7 +6,7 @@ namespace QG.Managers.SoundSystem
     [CreateAssetMenu(fileName = "Track", menuName = "Quarter Asset/Sound System/Track Settings")]
     public class AudioSettings : ScriptableObject
     {
-        public AudioClip AudioClip = null;
+        public AudioResource AudioClip = null;
         public AudioMixerGroup OutputAudioMixerGroup = null;
         public bool Mute = false;
         public bool BypassEffects = false;
@@ -22,7 +22,7 @@ namespace QG.Managers.SoundSystem
         [Range(0, 1.1f)] public float ReverbZoneMix = 1;
         public void ApplySettings(AudioSource source)
         {
-            source.clip = AudioClip;
+            source.resource = AudioClip;
             source.outputAudioMixerGroup = OutputAudioMixerGroup;
             source.mute = Mute;
             source.bypassEffects = BypassEffects;
