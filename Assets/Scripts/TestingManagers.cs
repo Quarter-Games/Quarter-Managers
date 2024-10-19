@@ -12,6 +12,6 @@ public class TestingManagers : MonoBehaviour
     public List<Transaction> upgrades;
 
     [SerializeReference]
-    public Transaction upgrade;
+    public Transaction upgrade = new CurrencyToCurrencyTransaction();
 
 }
