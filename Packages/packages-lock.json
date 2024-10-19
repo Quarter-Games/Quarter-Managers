@@ -1,5 +1,21 @@
 {
   "dependencies": {
+    "com.quarter-games.ads": {
+      "version": "file:com.quarter-games.ads",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "com.quarter-games.save.basic": "1.0.0"
+      }
+    },
+    "com.quarter-games.ads.unity-legacy": {
+      "version": "file:com.quarter-games.ads.unity-legacy",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "com.quarter-games.ads": "1.0.0"
+      }
+    },
     "com.quarter-games.analytics": {
       "version": "file:com.quarter-games.analytics",
       "depth": 0,
@@ -179,6 +195,15 @@
         "com.unity.2d.tilemap": "1.0.0",
         "com.unity.modules.tilemap": "1.0.0",
         "com.unity.modules.jsonserialize": "1.0.0"
+      },
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.ads": {
+      "version": "4.12.0",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.ugui": "1.0.0"
       },
       "url": "https://packages.unity.com"
     },

@@ -1,0 +1,19 @@
+{
+    "name": "QG.Managers.Ads.Legacy",
+    "rootNamespace": "QG.Managers.Ads.Legacy",
+    "references": [
+        "GUID:d888a2820ba200b4fa44056916104282",
+        "GUID:51081eac50a27b349a7a8c28ad182e17",
+        "GUID:ff6de30450f3748908ff580f6ec64d9a",
+        "GUID:fe25561d224ed4743af4c60938a59d0b"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

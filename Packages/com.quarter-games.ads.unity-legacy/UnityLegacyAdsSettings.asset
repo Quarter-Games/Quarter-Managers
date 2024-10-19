@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4991ecc999321ab4ab7ebc391b1617b5, type: 3}
+  m_Name: UnityLegacyAdsSettings
+  m_EditorClassIdentifier: 
+  AndroidGameId: 5715737
+  IosGameId: 5715736
+  AndroidAddUnits:
+  - AddUnitId: Rewarded_Android
+    AdsType: 2
+  - AddUnitId: Banner_Android
+    AdsType: 0
+  - AddUnitId: Interstitial_Android
+    AdsType: 1
+  IosAddUnits:
+  - AddUnitId: Rewarded_iOS
+    AdsType: 2
+  - AddUnitId: Banner_iOS
+    AdsType: 0
+  - AddUnitId: Interstitial_iOS
+    AdsType: 1
