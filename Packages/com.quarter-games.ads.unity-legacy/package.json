@@ -1,7 +1,7 @@
 {
   "name": "com.quarter-games.ads.unity-legacy",
   "version": "1.0.0",
-  "displayName": "QG Unity Legacy Ads ",
+  "displayName": "QG Unity Legacy Ads",
   "description": "This is API for ads manager",
   "unity": "2022.3",
   "documentationUrl": "https://github.com/Quarter-Games/Quarter-Managers",
@@ -25,6 +25,7 @@
   "homepage": "https://github.com/Quarter-Games/Quarter-Managers#readme",
   "hideInEditor": false,
   "dependencies": {
-    "com.quarter-games.ads": "1.0.0"
+    "com.quarter-games.ads": "1.0.0",
+    "com.unity.ads": "1.0.0"
   }
 }

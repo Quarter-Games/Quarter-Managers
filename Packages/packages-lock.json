@@ -13,7 +13,8 @@
       "depth": 0,
       "source": "embedded",
       "dependencies": {
-        "com.quarter-games.ads": "1.0.0"
+        "com.quarter-games.ads": "1.0.0",
+        "com.unity.ads": "1.0.0"
       }
     },
     "com.quarter-games.analytics": {

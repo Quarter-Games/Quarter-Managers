@@ -1,6 +1,6 @@
 {
   "name": "com.quarter-games.sound",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "displayName": "QG Sound",
   "description": "This is easy to use sound manager",
   "unity": "2022.3",
