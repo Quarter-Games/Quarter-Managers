@@ -39,7 +39,7 @@
       "depth": 0,
       "source": "embedded",
       "dependencies": {
-        "com.quarter-games.manager": "1.0.0"
+        "com.quarter-games.manager": "1.0.2"
       }
     },
     "com.quarter-games.economy.basic": {
@@ -56,6 +56,15 @@
       "depth": 0,
       "source": "embedded",
       "dependencies": {}
+    },
+    "com.quarter-games.quest": {
+      "version": "file:com.quarter-games.quest",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "com.quarter-games.economy": "1.0.2",
+        "com.quarter-games.save.basic": "1.0.1"
+      }
     },
     "com.quarter-games.save.basic": {
       "version": "file:com.quarter-games.save.basic",

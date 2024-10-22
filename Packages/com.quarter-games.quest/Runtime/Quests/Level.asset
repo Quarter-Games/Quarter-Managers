@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8067e8f5fb231f94a86624eb6029c9b4, type: 3}
+  m_Name: Level
+  m_EditorClassIdentifier: 
+  quests:
+    MaxConcurrentQuests: 0
+    QuestOrder:
+    - ID: 
+      title: 
+      description: 
+      sprite: {fileID: 0}
+      Condition:
+        rid: -2
+      reward:
+        rid: -2
+    - ID: 
+      title: 
+      description: 
+      sprite: {fileID: 0}
+      Condition:
+        rid: 1623672415380046135
+      reward:
+        rid: -2
+    isRandom: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
+    - rid: 1623672415380046135
+      type: {class: ActionQuestCondition, ns: QG.Managers.QuestSystem, asm: QG.Managers.QuestSystem}
+      data:
+        Condition:
+          m_PersistentCalls:
+            m_Calls: []

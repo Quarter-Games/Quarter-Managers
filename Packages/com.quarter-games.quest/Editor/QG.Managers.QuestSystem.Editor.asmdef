@@ -1,8 +1,8 @@
 {
-    "name": "QG.Managers.Economy.Editor",
-    "rootNamespace": "QG.Managers.Economy.Editor",
+    "name": "QG.Managers.QuestSystem.Editor",
+    "rootNamespace": "QG.Managers.QuestSystem.Editor",
     "references": [
-        "GUID:a6124051fecfe9c4ea50d79eb05db859",
+        "GUID:32fce8cac64d99a498c2bf555cb7b880",
         "GUID:d2e92ca057948de4bba651b41558f70e"
     ],
     "includePlatforms": [],
