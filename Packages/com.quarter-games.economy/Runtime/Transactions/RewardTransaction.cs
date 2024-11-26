@@ -11,6 +11,21 @@ namespace QG.Managers.Economy.Transactions
             Currency.Increment(Amount);
         }
 
+        public override void ExecuteFirst()
+        {
+            return;
+        }
+
+        public override void ExecuteSecond()
+        {
+            Currency.Increment(Amount);
+        }
+
+        public override string GetCostValue()
+        {
+            return new CurrencyValue(Amount).GetStringValue();
+        }
+
         public override bool IsPossible() => true;
     }
 }

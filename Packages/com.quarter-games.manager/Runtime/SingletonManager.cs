@@ -20,7 +20,8 @@ namespace QG.Managers
         }
         static protected T LoadFallBackManager()
         {
-            var manager = Resources.Load<T>("Managers/");
+            var manager = Instantiate(Resources.LoadAll<T>("Managers")[0]);
+            
             manager.Init();
             return manager;
         }

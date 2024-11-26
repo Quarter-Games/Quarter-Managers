@@ -39,7 +39,7 @@
       "depth": 0,
       "source": "embedded",
       "dependencies": {
-        "com.quarter-games.manager": "1.0.2"
+        "com.quarter-games.manager": "1.0.5"
       }
     },
     "com.quarter-games.economy.basic": {

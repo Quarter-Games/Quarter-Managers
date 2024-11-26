@@ -1,5 +1,5 @@
 using UnityEngine;
-namespace QG.Managers.QuestSystem.Editor
+namespace QG.Managers.Editor
 {
     using System;
     using System.Collections.Generic;

@@ -1,6 +1,6 @@
 {
   "name": "com.quarter-games.economy",
-  "version": "1.0.2",
+  "version": "1.0.7",
   "displayName": "QG Economy",
   "description": "This is basic economy system",
   "unity": "2022.3",
@@ -10,7 +10,7 @@
   "keywords": [
     "Tools",
     "Template",
-    "Loading Scree",
+    "Loading Screen",
     "Game Economy"
   ],
   "author": "Dendefo <daniek332@gmail.com> (https://github.com/Dendefo)",
@@ -25,6 +25,6 @@
   "homepage": "https://github.com/Quarter-Games/Quarter-Managers#readme",
   "hideInEditor": false,
   "dependencies": {
-    "com.quarter-games.manager": "1.0.2"
+    "com.quarter-games.manager": "1.0.5"
   }
 }

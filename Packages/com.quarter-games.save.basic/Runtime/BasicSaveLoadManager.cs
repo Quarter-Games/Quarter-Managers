@@ -64,7 +64,7 @@ namespace QG.Managers.SaveSystem.Basic
         {
             if (Buffer.ContainsKey(key))
             {
-                return (T)Buffer[key];
+                return (T)Enum.Parse(typeof(T), Buffer[key] as string);
             }
             if (Instance == null)
             {

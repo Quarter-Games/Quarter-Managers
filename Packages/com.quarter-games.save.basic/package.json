@@ -1,6 +1,6 @@
 {
   "name": "com.quarter-games.save.basic",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "displayName": "QG Basic Save System",
   "description": "This is basic save system",
   "unity": "2022.3",
@@ -10,7 +10,7 @@
   "keywords": [
     "Tools",
     "Template",
-    "Loading Scree",
+    "Loading Screen",
     "Save System"
   ],
   "author": "Dendefo <daniek332@gmail.com> (https://github.com/Dendefo)",

@@ -1,6 +1,6 @@
 {
   "name": "com.quarter-games.economy.basic",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "displayName": "QG Economy Basic",
   "description": "This is economy system based on basic save system for saving the data",
   "unity": "2022.3",
