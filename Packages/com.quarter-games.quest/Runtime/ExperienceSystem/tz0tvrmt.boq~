@@ -1,0 +1,87 @@
+using DG.Tweening;
+using QG.Managers.StateSystem;
+using System;
+using System.Collections;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class ExperienceObserver : MonoBehaviour
+{
+    [SerializeField] private TMPro.TMP_Text CurrentLevel;
+    [SerializeField] private TMPro.TMP_Text NextLevel;
+    [SerializeField] private Image ExpSlider;
+    [SerializeField] private Image NextLevelIcon;
+    [SerializeField] GenericPopUp LevelUpPopUpPrefab;
+    private int i = 0;
+
+    private void Awake()
+    {
+        var currLevel = ExperienceManager.GetCurrentLevelData();
+        var nextLevel = ExperienceManager.GetNextLevelData();
+        var exp = ExperienceManager.GetPlayerExp();
+        SetCurrentLevelText(currLevel.Level);
+        SetNextLevelText(nextLevel.Level);
+        SetNextLevelIcon(nextLevel.Icon);
+        if (ExpSlider != null) ExpSlider.fillAmount = exp / (float)nextLevel.ExperienceRequired;
+    }
+    private void OnEnable()
+    {
+        ExperienceManager.OnExpGain += OnExpGain;
+    }
+    private void OnDisable()
+    {
+        ExperienceManager.OnExpGain -= OnExpGain;
+    }
+    private void SetCurrentLevelText(int level)
+    {
+        if (CurrentLevel != null) CurrentLevel.text = $"{level}";
+    }
+    private void SetNextLevelText(int level)
+    {
+        if (NextLevel != null) NextLevel.text = $"{level}";
+    }
+    private void SetNextLevelIcon(Sprite icon)
+    {
+        if (NextLevelIcon != null) NextLevelIcon.sprite = icon;
+    }
+
+    private void OnExpGain(int startExp, int endExp, int levelsChanged)
+    {
+        Debug.Log("startEXP: " + startExp + " endEXP: " + endExp + " levelsChanged: " + levelsChanged);
+        if (levelsChanged == 0)
+        {
+            ExpSlider.DOFillAmount(endExp / (float)ExperienceManager.GetNextLevelData().ExperienceRequired, 0.5f).OnComplete(() =>
+            {
+                var current = ExperienceManager.GetCurrentLevelData();
+                SetCurrentLevelText(current.Level);
+                SetNextLevelText(ExperienceManager.GetNextLevelData().Level);
+                SetNextLevelIcon(ExperienceManager.GetNextLevelData().Icon);
+            });
+            return;
+        }
+        ExpSlider.DOFillAmount(1, 0.5f).OnComplete(() =>
+        {
+            var crnt = ExperienceManager.GetCurrentLevelData();
+            var next = ExperienceManager.GetNextLevelData();
+            SetCurrentLevelText(crnt.Level - levelsChanged + i);
+            SetNextLevelText(next.Level - levelsChanged + i);
+            SetNextLevelIcon(next.Icon);
+            Instantiate(LevelUpPopUpPrefab, CurrentLevel.canvas.transform).Init(new()
+            {
+                Title = crnt.BigTitle,
+                Description = crnt.Description,
+                Image = crnt.Icon,
+                isClosable = false,
+                LeftButton = new(PopUpButtonType.Neutral, "Accept", () => crnt.LevelUp())
+            });
+            ExpSlider.fillAmount = 0;
+            OnExpGain(startExp, endExp, levelsChanged - 1);
+        });
+
+    }
+}
+public class PauseState : GameState
+{
+    public override float GameTimeScale => 0;
+    public override float UnityTimeScale => 0;
+}

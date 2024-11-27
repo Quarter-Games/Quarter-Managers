@@ -1,0 +1,91 @@
+using QG.Managers;
+using QG.Managers.Economy;
+using QG.Managers.SaveSystem.Basic;
+using System;
+using UnityEngine;
+
+public class ExperienceManager : SingletonManager<ExperienceManager>
+{
+    public static event Action<LevelData> OnLevelUp;
+    public delegate void ExpGainDelegate(int startExp, int endExp,int levelsChanged);
+    public static event ExpGainDelegate OnExpGain;
+    public ExperienceSystemData ExperienceSystemData;
+    public int PlayerLevel;
+    public int PlayerExperience;
+    public override bool IsReady() => true;
+    public override void Init()
+    {
+        base.Init();
+        PlayerLevel = BasicSaveLoadManager.GetData(nameof(PlayerLevel), 1).Result;
+        PlayerExperience = BasicSaveLoadManager.GetData(nameof(PlayerExperience), 0).Result;
+        RecursiveLevelUp();
+        ExperienceSystemData.ExpGivingCurrencies.ForEach(x => x.OnCurrencyChanged += GiveExp);
+    }
+    private void OnDestroy()
+    {
+        ExperienceSystemData.ExpGivingCurrencies.ForEach(x => x.OnCurrencyChanged -= GiveExp);
+    }
+
+    private void GiveExp(Currency currency, float arg2)
+    {
+        if (currency is BaseExperienceCurrency expCurrency)
+        {
+            GiveExp((int)arg2);
+        }
+    }
+
+    public static LevelData GetCurrentLevelData()
+    {
+        if (Instance == null)
+        {
+            LoadFallBackManager();
+        }
+        return Instance.ExperienceSystemData.GetLevelData(Instance.PlayerLevel);
+    }
+    public static LevelData GetNextLevelData()
+    {
+        return Instance.ExperienceSystemData.GetLevelData(Instance.PlayerLevel + 1);
+    }
+    public static int GetPlayerExp()
+    {
+        return Instance.PlayerExperience;
+    }
+    public static void GiveExperience(int exp)
+    {
+        Instance.GiveExp(exp);
+    }
+    public void GiveExp(int exp)
+    {
+        var currentExp = PlayerExperience;
+        var currentLevel = PlayerLevel;
+        PlayerExperience += exp;
+        BasicSaveLoadManager.SetData(nameof(PlayerExperience), PlayerExperience);
+        RecursiveLevelUp();
+        var finalExp = PlayerExperience;
+        var levelChange = PlayerLevel - currentLevel;
+        OnExpGain?.Invoke(currentExp, finalExp, levelChange);
+    }
+    public bool CheckLevelUp()
+    {
+        var currentLevel = ExperienceSystemData.GetLevelData(PlayerLevel);
+        if (PlayerExperience >= currentLevel.ExperienceRequired)
+        {
+            return true;
+        }
+        return false;
+    }
+    public void RecursiveLevelUp()
+    {
+        if (CheckLevelUp())
+        {
+            var currentLevel = ExperienceSystemData.GetLevelData(PlayerLevel);
+            PlayerLevel++;
+            PlayerExperience -= currentLevel.ExperienceRequired;
+            BasicSaveLoadManager.SetData(nameof(PlayerLevel), PlayerLevel);
+            BasicSaveLoadManager.SetData(nameof(PlayerExperience), PlayerExperience);
+            OnLevelUp?.Invoke(ExperienceSystemData.GetLevelData(PlayerLevel));
+            RecursiveLevelUp();
+        }
+
+    }
+}

@@ -3,8 +3,8 @@
     "rootNamespace": "QG.Managers.QuestSystem",
     "references": [
         "GUID:a6124051fecfe9c4ea50d79eb05db859",
-        "GUID:5af7d931534431343b421fead9c3c9cc",
-        "GUID:d888a2820ba200b4fa44056916104282"
+        "GUID:d888a2820ba200b4fa44056916104282",
+        "GUID:5af7d931534431343b421fead9c3c9cc"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

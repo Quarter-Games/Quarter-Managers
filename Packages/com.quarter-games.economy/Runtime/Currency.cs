@@ -19,13 +19,13 @@ namespace QG.Managers.Economy
         public string GetAmountString() =>new CurrencyValue(EconomyManager.GetCurrencyAmount(this).Result).GetStringValue();
         public void Increment(int amount)
         {
-            EconomyManager.IncrementCurrency(this, amount);
             OnCurrencyChanged?.Invoke(this, amount);
+            EconomyManager.IncrementCurrency(this, amount);
         }
         public void Decrement(int amount)
         {
-            EconomyManager.DecrementCurrency(this, amount);
             OnCurrencyChanged?.Invoke(this, -amount);
+            EconomyManager.DecrementCurrency(this, amount);
         }
     }
     [Serializable]

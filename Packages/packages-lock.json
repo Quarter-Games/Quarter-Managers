@@ -62,7 +62,7 @@
       "depth": 0,
       "source": "embedded",
       "dependencies": {
-        "com.quarter-games.economy": "1.0.2",
+        "com.quarter-games.economy": "1.0.8",
         "com.quarter-games.save.basic": "1.0.1"
       }
     },
