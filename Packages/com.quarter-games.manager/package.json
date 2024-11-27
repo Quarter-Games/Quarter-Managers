@@ -1,6 +1,6 @@
 {
   "name": "com.quarter-games.manager",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "displayName": "QG Game Managers",
   "description": "this is a base manager api",
   "unity": "2022.3",

@@ -1,0 +1,147 @@
+using System;
+using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
+
+public class GenericPopUp : MonoBehaviour
+{
+    [SerializeField] TMP_Text Description;
+    [SerializeField] TMP_Text Title;
+    [SerializeField] Image Image;
+    [SerializeField] Button LeftButton;
+    [SerializeField] TMP_Text LeftText;
+    [SerializeField] Button RightButton;
+    [SerializeField] TMP_Text RightText;
+    [SerializeField] Button CloseButton;
+    [SerializeField] Canvas PopUpCanvas;
+    [SerializeField] Image BackGround;
+    [SerializeField] Sprite PositiveButtonSprite;
+    [ColorUsage(true)][SerializeField] Color PositiveTextColor;
+    [SerializeField] Sprite NegativeButtonSprite;
+    [ColorUsage(true)][SerializeField] Color NegativeTextColor;
+    [SerializeField] Sprite NeutralButtonSprite;
+    [ColorUsage(true)][SerializeField] Color NeutralTextColor;
+    private PopUpData _data;
+    virtual public void Init(PopUpData data)
+    {
+        if (data == null)
+        {
+            Close();
+            return;
+        }
+        else gameObject.SetActive(true);
+        _data = data;
+        Title.text = data.Title;
+        Description.text = data.Description;
+        Image.sprite = data.Image;
+        Image.gameObject.SetActive(data.Image != null);
+        PopUpCanvas.sortingOrder = data.Priority;
+        BackGround.color = new Color(BackGround.color.r, BackGround.color.g, BackGround.color.b, data.BackGroundAlpha);
+        if (data.isClosable)
+        {
+            CloseButton.gameObject.SetActive(true);
+        }
+        else
+        {
+            CloseButton.gameObject.SetActive(false);
+        }
+        //TODO Create Different Types Of Buttons
+        if (data.LeftButton != null)
+        {
+            LeftButton.gameObject.SetActive(true);
+            LeftText.text = data.LeftButton.Text;
+        }
+        else LeftButton.gameObject.SetActive(false);
+        if (data.RightButton != null)
+        {
+            RightButton.gameObject.SetActive(true);
+            RightText.text = data.RightButton.Text;
+        }
+        else RightButton.gameObject.SetActive(false);
+
+    }
+    virtual protected void SetUpButton(Button button, TMP_Text btnText, PopUpButton settings)
+    {
+        if (settings == null)
+        {
+            button.gameObject.SetActive(false);
+            return;
+        }
+        button.gameObject.SetActive(true);
+        btnText.text = settings.Text;
+        switch (settings.Type)
+        {
+            case PopUpButtonType.Positive:
+                button.image.sprite = PositiveButtonSprite;
+                btnText.color = PositiveTextColor;
+                break;
+            case PopUpButtonType.Negative:
+                button.image.sprite = NegativeButtonSprite;
+                btnText.color = NegativeTextColor;
+                break;
+            case PopUpButtonType.Neutral:
+                button.image.sprite = NeutralButtonSprite;
+                btnText.color = NeutralTextColor;
+                break;
+        }
+    }
+    virtual public void LeftButtonClick()
+    {
+        _data.LeftButton.OnPress?.Invoke();
+        Close();
+    }
+    virtual public void RightButtonClick()
+    {
+        _data.RightButton.OnPress?.Invoke();
+        Close();
+    }
+    virtual public void CloseButtonClick()
+    {
+        _data.OnCloseClick?.Invoke();
+        Close();
+    }
+    virtual public void ClickOnBackground()
+    {
+        if (_data.isBackgroundClosable)
+        {
+            _data.OnCloseClick?.Invoke();
+            Close();
+        }
+    }
+    virtual public void Close()
+    {
+        gameObject.SetActive(false);
+    }
+}
+public class PopUpData
+{
+    public string Title;
+    public string Description;
+    public Sprite Image;
+    public bool isClosable;
+    public bool isBackgroundClosable;
+    public Action OnCloseClick;
+    public PopUpButton LeftButton;
+    public PopUpButton RightButton;
+    public int Priority;
+    public float BackGroundAlpha = 0.66f;
+}
+public class PopUpButton
+{
+    public PopUpButtonType Type;
+    public string Text;
+    public Action OnPress;
+    private PopUpButton() { }
+    public PopUpButton(PopUpButtonType type, string text, Action onPress)
+    {
+        Type = type;
+        Text = text;
+        OnPress = onPress;
+    }
+}
+public enum PopUpButtonType
+{
+    Positive,
+    Negative,
+    Neutral
+}

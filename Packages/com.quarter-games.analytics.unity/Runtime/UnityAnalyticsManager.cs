@@ -10,13 +10,14 @@ namespace QG.Managers.Analytics.UnityAnalytics
     {
         [SerializeField] private bool _isReady = false;
         override public bool IsReady() => _isReady;
-        [SerializeField] GameObject ConsentPopUp;
+        [SerializeField] GenericPopUp ConsentPopUp;
+        [SerializeField] PopUpSettings PopUpSettings;
         public override void Init()
         {
             base.Init();
             AwaitForConsent();
         }
-        
+
         private async void AwaitForConsent()
         {
             if (UnityServices.State == ServicesInitializationState.Uninitialized)
@@ -28,13 +29,16 @@ namespace QG.Managers.Analytics.UnityAnalytics
         }
         public void AskToConsent()
         {
-            ConsentPopUp.SetActive(true);
+            PopUpSettings.Data.LeftButton.OnPress = () => Consent(true);
+            PopUpSettings.Data.RightButton.OnPress = () => Consent(false);
+            var popUp = Instantiate(ConsentPopUp, transform);
+            popUp.Init(PopUpSettings);
+
         }
         public void Consent(bool consent)
         {
             if (consent) UpdatePlayerConsent(PlayerConsentStatus.Granted);
             else UpdatePlayerConsent(PlayerConsentStatus.Denied);
-            ConsentPopUp.SetActive(false);
             _isReady = true;
         }
         override public void LogNewEvent<T>(string eventName, Dictionary<string, T> eventData)
