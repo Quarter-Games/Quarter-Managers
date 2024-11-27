@@ -105,8 +105,11 @@ public class GenericPopUp : MonoBehaviour
     }
     virtual public void Close()
     {
-        _data.OnPopUpSettingsChanged -= () => UpdateData(_data);
         Destroy(gameObject);
+    }
+    private void OnDestroy()
+    {
+        _data.OnPopUpSettingsChanged -= () => UpdateData(_data);
     }
     [Serializable]
     public class ButtonSetUpData
