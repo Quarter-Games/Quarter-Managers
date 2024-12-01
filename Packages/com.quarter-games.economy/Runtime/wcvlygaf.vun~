@@ -12,28 +12,8 @@ namespace QG.Managers.Economy
         {
             ICurrencyHandler.CurrencyLoadRequest += CurrencyLoadRequest;
         }
-        public override void Init()
-        {
-            base.Init();
-            CurrencyLoadRequest(this);
-        }
 
-        virtual protected void CurrencyLoadRequest(ICurrencyHandler handler)
-        {
-            if (CurrencyList == null)
-            {
-                Debug.LogError("Currency List is not set in the Economy Manager");
-            }
-            foreach (var currency in CurrencyList.GameCurrencies)
-            {
-                if (currency.currencyID == "")
-                {
-                    Debug.LogError("Currency ID is not set for " + currency.currencyName);
-                    continue;
-                }
-                handler.SetCurrencyData(currency, GetAmount(currency, handler).Result);
-            }
-        }
+        abstract protected void CurrencyLoadRequest(ICurrencyHandler handler);
 
         private void OnDisable()
         {
@@ -64,7 +44,12 @@ namespace QG.Managers.Economy
 
         public void SetCurrencyData(Currency currency, int amount)
         {
-
+            
+        }
+        public override void Init()
+        {
+            base.Init();
+            CurrencyLoadRequest(this);
         }
         #endregion
     }

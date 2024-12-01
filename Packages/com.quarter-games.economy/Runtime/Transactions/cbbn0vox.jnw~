@@ -32,16 +32,6 @@ namespace QG.Managers.Economy.Transactions
         {
             return new CurrencyValue(Cost).GetStringValue();
         }
-        public override Transaction GetCTCTransaction()
-        {
-            return new CurrencyToCurrencyTransaction
-            {
-                Cost = Cost,
-                ReducedCurrency = ReducedCurrency,
-                GainedCurrency = ReducedCurrency,
-                Gain = Cost
-            };
-        }
 
         public override bool IsPossible(ICurrencyHandler sender) => ReducedCurrency.GetAmount(sender) >= Cost;
     }

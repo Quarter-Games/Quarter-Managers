@@ -23,7 +23,7 @@ public class LevelDefinition : ScriptableObject
     }
     virtual public void LevelUp()
     {
-        LevelUpTransaction.Execute();
+        LevelUpTransaction.Execute(null, null);
         foreach (UnlockableData lockedData in Unlocks)
         {
             if (lockedData == null) continue;

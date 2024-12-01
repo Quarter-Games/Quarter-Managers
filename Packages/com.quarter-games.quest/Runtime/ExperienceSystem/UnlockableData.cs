@@ -23,9 +23,9 @@ public class UnlockableData : ScriptableObject
             return true;
         }
         if (!autoPay) return false;
-        if (ToUnlock.IsPossible())
+        if (ToUnlock.IsPossible(null))
         {
-            ToUnlock.Execute();
+            ToUnlock.Execute(null, null);
             return true;
         }
         return false;
@@ -38,7 +38,7 @@ public class UnlockableData : ScriptableObject
     }
     public void Unlock()
     {
-        if (Reward.Currency != null) Reward.Execute();
+        if (Reward.Currency != null) Reward.Execute(null, null);
         UnlockRequested?.Invoke();
         QG.Managers.SaveSystem.Basic.BasicSaveLoadManager.SetData(UniqueID, LockStatus.Unlocked);
     }

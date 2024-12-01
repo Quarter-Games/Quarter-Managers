@@ -10,22 +10,22 @@ namespace QG.Managers.Economy.Transactions
         public int Cost;
         public UnityEvent Action;
         public void SetAction(UnityEvent action) => Action = action;
-        public override void Execute()
+        public override void Execute(ICurrencyHandler sender, ICurrencyHandler reciever)
         {
-            if (ReducedCurrency.GetAmount() < Cost) return;
-            ReducedCurrency.Decrement(Cost);
+            if (!IsPossible(sender)) return;
+            ReducedCurrency.Decrement(Cost, sender);
             Action?.Invoke();
         }
 
-        public override bool IsPossible() => ReducedCurrency.GetAmount() >= Cost;
+        public override bool IsPossible(ICurrencyHandler sender) => ReducedCurrency.GetAmount(sender) >= Cost;
 
-        public override void ExecuteFirst()
+        public override void ExecuteFirst(ICurrencyHandler sender)
         {
-            if (ReducedCurrency.GetAmount() < Cost) return;
-            ReducedCurrency.Decrement(Cost);
+            if (ReducedCurrency.GetAmount(sender) < Cost) return;
+            ReducedCurrency.Decrement(Cost, sender);
         }
 
-        public override void ExecuteSecond()
+        public override void ExecuteSecond(ICurrencyHandler reciever)
         {
             Action?.Invoke();
         }
@@ -33,6 +33,17 @@ namespace QG.Managers.Economy.Transactions
         public override string GetCostValue()
         {
             return new CurrencyValue(Cost).GetStringValue();
+        }
+
+        public override Transaction GetCTCTransaction()
+        {
+            return new CurrencyToCurrencyTransaction
+            {
+                Cost = Cost,
+                ReducedCurrency = ReducedCurrency,
+                GainedCurrency = ReducedCurrency,
+                Gain = Cost
+            };
         }
     }
 }

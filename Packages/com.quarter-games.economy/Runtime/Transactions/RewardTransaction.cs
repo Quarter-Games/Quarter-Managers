@@ -6,19 +6,19 @@ namespace QG.Managers.Economy.Transactions
         public Currency Currency;
         public int Amount;
 
-        public override void Execute()
+        public override void Execute(ICurrencyHandler sender, ICurrencyHandler reciever)
         {
-            Currency.Increment(Amount);
+            Currency.Increment(Amount, reciever);
         }
 
-        public override void ExecuteFirst()
+        public override void ExecuteFirst(ICurrencyHandler sender)
         {
             return;
         }
 
-        public override void ExecuteSecond()
+        public override void ExecuteSecond(ICurrencyHandler reciever)
         {
-            Currency.Increment(Amount);
+            Currency.Increment(Amount, reciever);
         }
 
         public override string GetCostValue()
@@ -26,6 +26,14 @@ namespace QG.Managers.Economy.Transactions
             return new CurrencyValue(Amount).GetStringValue();
         }
 
-        public override bool IsPossible() => true;
+        public override bool IsPossible(ICurrencyHandler sender) => true;
+        public override Transaction GetCTCTransaction()
+        {
+            return new RewardTransaction
+            {
+                Currency = Currency,
+                Amount = Amount
+            };
+        }
     }
 }

@@ -50,7 +50,7 @@ public class ExperienceManager : SingletonManager<ExperienceManager>
     public bool CheckLevelUp()
     {
         var currentLevel = ExperienceSystemData.GetLevelData();
-        return currentLevel.LevelUpTransaction.IsPossible();
+        return currentLevel.LevelUpTransaction.IsPossible(null);
     }
     public void RecursiveLevelUp()
     {

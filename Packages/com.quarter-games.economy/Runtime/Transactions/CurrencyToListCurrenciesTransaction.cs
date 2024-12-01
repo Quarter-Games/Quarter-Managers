@@ -11,56 +11,55 @@ public class CurrencyToListCurrenciesTransaction : Transaction
     public int Cost;
 
     public List<CurrencyAndCost> CurrenciesAndCosts;
-    public override void Execute()
+    public override void Execute(ICurrencyHandler sender, ICurrencyHandler reciever)
     {
-        if (ReducedCurrency.GetAmount() >= Cost)
-        {
-            ReducedCurrency.Decrement(Cost);
+        if (!IsPossible(sender)) return;
+        ReducedCurrency.Decrement(Cost, sender);
 
-            foreach (var currencyAndCost in CurrenciesAndCosts)
-            {
-                currencyAndCost.Currency.Increment(currencyAndCost.Cost);
-            }
+        foreach (var currencyAndCost in CurrenciesAndCosts)
+        {
+            currencyAndCost.Currency.Increment(currencyAndCost.Cost, reciever);
         }
     }
 
-    public override void ExecuteFirst()
+    public override void ExecuteFirst(ICurrencyHandler sender)
     {
-        if (ReducedCurrency.GetAmount() < Cost) return;
-        ReducedCurrency.Decrement(Cost);
+        if (!IsPossible(sender)) return;
+        ReducedCurrency.Decrement(Cost, sender);
     }
 
-    public override void ExecuteSecond()
+    public override void ExecuteSecond(ICurrencyHandler reciever)
     {
         foreach (var currencyAndCost in CurrenciesAndCosts)
         {
-            currencyAndCost.Currency.Increment(currencyAndCost.Cost);
+            currencyAndCost.Currency.Increment(currencyAndCost.Cost, reciever);
         }
     }
-
-    public void ExecuteSecondPart()
-    {
-        foreach (var currencyAndCost in CurrenciesAndCosts)
-        {
-            currencyAndCost.Currency.Increment(currencyAndCost.Cost);
-        } 
-    }
-
     public override string GetCostValue()
     {
         return new CurrencyValue(Cost).GetStringValue();
     }
 
-    public override bool IsPossible()
+    public override bool IsPossible(ICurrencyHandler sender)
     {
         foreach (var currencyAndCost in CurrenciesAndCosts)
         {
-            if (ReducedCurrency.GetAmount() < currencyAndCost.Cost)
+            if (ReducedCurrency.GetAmount(sender) < currencyAndCost.Cost)
             {
                 return false;
             }
         }
         return true;
+    }
+    public override Transaction GetCTCTransaction()
+    {
+        return new CurrencyToCurrencyTransaction
+        {
+            Cost = Cost,
+            ReducedCurrency = ReducedCurrency,
+            GainedCurrency = ReducedCurrency,
+            Gain = Cost
+        };
     }
     [Serializable]
     public struct CurrencyAndCost

@@ -8,7 +8,7 @@ namespace QG.Managers.QuestSystem
         public RewardTransaction reward;
         public override void GiveReward()
         {
-            reward.Execute();
+            reward.Execute(null,null);
         }
     }
 }
