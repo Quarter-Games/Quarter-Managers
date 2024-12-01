@@ -52,6 +52,17 @@ namespace QG.Managers.SaveSystem.Basic.Prefs
             if (saveType == EnumSaveSetting.AsInt) return (T)Enum.ToObject(typeof(T), await GetValue(key, Convert.ToInt32(defaultValue)));
             return (T)Enum.Parse(typeof(T), await GetValue(key, defaultValue.ToString()));
         }
+
+        protected override void SaveClusterImediate(object caller)
+        {
+            foreach (var key in BufferClusters[caller].Keys)
+            {
+                var type = BufferClusters[caller][key].GetType();
+                if (BufferClusters[caller][key] is int intValue) SetValue(key, intValue);
+                else if (BufferClusters[caller][key] is float floatValue) SetValue(key, floatValue);
+                else if (BufferClusters[caller][key] is string stringValue) SetValue(key, stringValue);
+            }
+        }
         #endregion
     }
 }

@@ -1,6 +1,6 @@
 {
   "name": "com.quarter-games.state",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "displayName": "QG State",
   "description": "This is state and time system",
   "unity": "2022.3",
@@ -26,6 +26,6 @@
   "homepage": "https://github.com/Quarter-Games/Quarter-Managers#readme",
   "hideInEditor": false,
   "dependencies": {
-    "com.quarter-games.manager": "1.0.0"
+    "com.quarter-games.manager": "1.0.7"
   }
 }

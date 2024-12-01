@@ -73,8 +73,8 @@ namespace QG.Managers.StateSystem
                 return currentTime - startTime >= timer.Duration;
             });
             timer.Callback?.Invoke();
+            listOfTimers.Remove(timer);
         }
-
         public void ChangeState(GameState state)
         {
             _gameState = state;

@@ -39,7 +39,7 @@
       "depth": 0,
       "source": "embedded",
       "dependencies": {
-        "com.quarter-games.manager": "1.0.5"
+        "com.quarter-games.manager": "1.0.7"
       }
     },
     "com.quarter-games.economy.basic": {
@@ -47,8 +47,8 @@
       "depth": 0,
       "source": "embedded",
       "dependencies": {
-        "com.quarter-games.economy": "1.0.0",
-        "com.quarter-games.save.basic": "1.0.0"
+        "com.quarter-games.economy": "1.0.9",
+        "com.quarter-games.save.basic": "1.0.2"
       }
     },
     "com.quarter-games.manager": {
@@ -62,8 +62,8 @@
       "depth": 0,
       "source": "embedded",
       "dependencies": {
-        "com.quarter-games.economy": "1.0.8",
-        "com.quarter-games.save.basic": "1.0.1"
+        "com.quarter-games.economy": "1.0.9",
+        "com.quarter-games.save.basic": "1.0.2"
       }
     },
     "com.quarter-games.save.basic": {

@@ -1,6 +1,6 @@
 {
   "name": "com.quarter-games.save.basic",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "displayName": "QG Basic Save System",
   "description": "This is basic save system",
   "unity": "2022.3",
