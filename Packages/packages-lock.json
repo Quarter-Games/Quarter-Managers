@@ -79,7 +79,7 @@
       "depth": 0,
       "source": "embedded",
       "dependencies": {
-        "com.quarter-games.save.basic": "1.0.0"
+        "com.quarter-games.save.basic": "1.0.3"
       }
     },
     "com.quarter-games.save.file": {
@@ -112,7 +112,7 @@
       "depth": 0,
       "source": "embedded",
       "dependencies": {
-        "com.quarter-games.manager": "1.0.0"
+        "com.quarter-games.manager": "1.0.7"
       }
     },
     "com.unity.2d.animation": {

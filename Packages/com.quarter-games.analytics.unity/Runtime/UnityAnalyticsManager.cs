@@ -10,7 +10,7 @@ namespace QG.Managers.Analytics.UnityAnalytics
     {
         [SerializeField] private bool _isReady = false;
         override public bool IsReady() => _isReady;
-        [SerializeField] GenericPopUp ConsentPopUp;
+        [SerializeField] GenericPopUp<PopUpSettings> ConsentPopUp;
         [SerializeField] PopUpSettings PopUpSettings;
         public override void Init()
         {

@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine.UI;
 using QG.Managers;
 
-public class GenericPopUp : MonoBehaviour
+public class GenericPopUp<TSettings> : MonoBehaviour where TSettings : PopUpSettings
 {
     [SerializeField] TMP_Text Description;
     [SerializeField] TMP_Text Title;
@@ -22,14 +22,14 @@ public class GenericPopUp : MonoBehaviour
     [ColorUsage(true)][SerializeField] Color NeutralTextColor;
     [SerializeField] Sprite NonInteractableSprite;
     [ColorUsage(true)][SerializeField] Color NonInteractableTextColor;
-    private PopUpSettings _data;
-    virtual public void Init(PopUpSettings data)
+    private TSettings _data;
+    virtual public void Init(TSettings data)
     {
         data.OnPopUpSettingsChanged += () => UpdateData(data);
         UpdateData(data);
 
     }
-    public void UpdateData(PopUpSettings data)
+    virtual public void UpdateData(TSettings data)
     {
         if (data == null)
         {
@@ -107,7 +107,11 @@ public class GenericPopUp : MonoBehaviour
     {
         Destroy(gameObject);
     }
-    private void OnDestroy()
+    virtual public void CloseWithoutDestroy()
+    {
+        gameObject.SetActive(false);
+    }
+    virtual protected void OnDestroy()
     {
         _data.OnPopUpSettingsChanged -= () => UpdateData(_data);
     }

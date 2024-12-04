@@ -519,7 +519,7 @@ GameObject:
   - component: {fileID: 7476130628540948876}
   - component: {fileID: 3922611987269706881}
   - component: {fileID: 3435341835193473226}
-  - component: {fileID: 7011707071711360170}
+  - component: {fileID: 341666280487435434}
   - component: {fileID: 1986027553442733182}
   - component: {fileID: 5190324134461524584}
   - component: {fileID: 908775886283414323}
@@ -588,7 +588,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &7011707071711360170
+--- !u!114 &341666280487435434
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -597,7 +597,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3412086139705416694}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66738c04bf8f8434c9ea27a3ee484218, type: 3}
+  m_Script: {fileID: 11500000, guid: 3816f269404616347810954e39a3c948, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Description: {fileID: 8244750913364105835}
@@ -617,13 +617,13 @@ MonoBehaviour:
   PopUpCanvas: {fileID: 5190324134461524584}
   BackGround: {fileID: 3435341835193473226}
   PositiveButtonSprite: {fileID: 1585606256997664464, guid: f2cce9ec80a20164fb77694f5d1d7f34, type: 3}
-  PositiveTextColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
-  NegativeButtonSprite: {fileID: -6676676090332398699, guid: f2cce9ec80a20164fb77694f5d1d7f34, type: 3}
-  NegativeTextColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  PositiveTextColor: {r: 0.19215688, g: 0.19215688, b: 0.19215688, a: 1}
+  NegativeButtonSprite: {fileID: 1585606256997664464, guid: f2cce9ec80a20164fb77694f5d1d7f34, type: 3}
+  NegativeTextColor: {r: 0.19215687, g: 0.19215687, b: 0.19215687, a: 1}
   NeutralButtonSprite: {fileID: 1585606256997664464, guid: f2cce9ec80a20164fb77694f5d1d7f34, type: 3}
-  NeutralTextColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
-  NonInteractableSprite: {fileID: -6676676090332398699, guid: f2cce9ec80a20164fb77694f5d1d7f34, type: 3}
-  NonInteractableTextColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  NeutralTextColor: {r: 0.19215687, g: 0.19215687, b: 0.19215687, a: 1}
+  NonInteractableSprite: {fileID: 1585606256997664464, guid: f2cce9ec80a20164fb77694f5d1d7f34, type: 3}
+  NonInteractableTextColor: {r: 0.19215687, g: 0.19215687, b: 0.19215687, a: 1}
 --- !u!114 &1986027553442733182
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -641,7 +641,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 7011707071711360170}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: GenericPopUp, QG.Managers
           m_MethodName: ClickOnBackground
           m_Mode: 1
@@ -814,7 +814,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7011707071711360170}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GenericPopUp, Assembly-CSharp
         m_MethodName: CloseButtonClick
         m_Mode: 1
@@ -1211,7 +1211,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7011707071711360170}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GenericPopUp, Assembly-CSharp
         m_MethodName: RightButtonClick
         m_Mode: 1
@@ -1725,7 +1725,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7011707071711360170}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GenericPopUp, Assembly-CSharp
         m_MethodName: LeftButtonClick
         m_Mode: 1
