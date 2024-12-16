@@ -39,7 +39,8 @@ namespace QG.Managers.Economy
         public string GetStringValue()
         {
             float value = Value;
-            List<string> suffixes = new List<string> { "", "K", "M", "B", "T", "Q", "QQ", "S", "SS", "O", "N", "D", "UN", "DD", "TR", "QT", "QN", "SD", "SP", "O", "N", "V", "U", "DUO", "TRE", "QU" };
+            List<string> suffixes = new List<string> { "", "K", "M", "B", "T", "aa", "ab", "ac", "ad", "ae", "af",
+            "ag", "ah", "ai", "aj", "ak", "al", "am", "an", "ao", "ap", "aq", "ar", "as", "at", "au", "av", "aw", "ax", "ay", "az" };
             int index = 0;
             foreach (string suffix in suffixes)
             {
@@ -48,6 +49,7 @@ namespace QG.Managers.Economy
                     return value.ToString() + suffix;
                 }
                 value /= 1000;
+                value = System.MathF.Round(value, 2);
                 index++;
             }
             return value.ToString() + suffixes[index];
