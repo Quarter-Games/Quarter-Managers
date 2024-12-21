@@ -1,4 +1,5 @@
 using System;
+using System.Numerics;
 using UnityEngine;
 
 namespace QG.Managers.Economy
@@ -7,6 +8,6 @@ namespace QG.Managers.Economy
     {
         public string UniqueID { get; }
         public static Action<ICurrencyHandler> CurrencyLoadRequest;
-        public void SetCurrencyData(Currency currency, int amount);
+        public void SetCurrencyData(Currency currency, BigInteger amount);
     }
 }

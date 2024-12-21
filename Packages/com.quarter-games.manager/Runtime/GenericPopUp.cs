@@ -22,7 +22,7 @@ public class GenericPopUp<TSettings> : MonoBehaviour where TSettings : PopUpSett
     [ColorUsage(true)][SerializeField] Color NeutralTextColor;
     [SerializeField] Sprite NonInteractableSprite;
     [ColorUsage(true)][SerializeField] Color NonInteractableTextColor;
-    private TSettings _data;
+    protected TSettings _data;
     virtual public void Init(TSettings data)
     {
         data.OnPopUpSettingsChanged += () => UpdateData(data);
@@ -49,6 +49,7 @@ public class GenericPopUp<TSettings> : MonoBehaviour where TSettings : PopUpSett
 
         SetUpButton(LeftButton, data.Data.LeftButton);
         SetUpButton(RightButton, data.Data.RightButton);
+        data.Data.UpdateEvent += () => UpdateData(data);
     }
     virtual protected void SetUpButton(ButtonSetUpData buttonData, PopUpButton settings)
     {
@@ -57,10 +58,12 @@ public class GenericPopUp<TSettings> : MonoBehaviour where TSettings : PopUpSett
             buttonData.button.gameObject.SetActive(false);
             return;
         }
+        buttonData.button.interactable = true;
         if (settings.IsInteractable != null && !settings.IsInteractable.Invoke())
         {
             buttonData.button.image.sprite = NonInteractableSprite;
             buttonData.text.color = NonInteractableTextColor;
+            buttonData.button.interactable = false;
         }
         buttonData.button.gameObject.SetActive(true);
 
@@ -113,6 +116,7 @@ public class GenericPopUp<TSettings> : MonoBehaviour where TSettings : PopUpSett
     }
     virtual protected void OnDestroy()
     {
+        _data.Data.UpdateEvent += () => UpdateData(_data);
         _data.OnPopUpSettingsChanged -= () => UpdateData(_data);
     }
     [Serializable]
@@ -133,6 +137,7 @@ public class PopUpData
     public bool isClosable;
     public bool isBackgroundClosable;
     public Action OnCloseClick;
+    public Action UpdateEvent;
     public PopUpButton LeftButton;
     public PopUpButton RightButton;
     public int Priority;

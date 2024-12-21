@@ -1,6 +1,6 @@
 {
   "name": "com.quarter-games.analytics.unity",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "displayName": "QG Unity Analytics",
   "description": "This is analytics manager for unity analytics. First you need to install com.unity.services.analytics from unity registry ",
   "unity": "2022.3",

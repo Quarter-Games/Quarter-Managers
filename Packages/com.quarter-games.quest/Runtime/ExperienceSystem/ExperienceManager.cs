@@ -1,6 +1,7 @@
 using QG.Managers;
 using QG.Managers.Economy;
 using System;
+using System.Numerics;
 
 public class ExperienceManager : SingletonManager<ExperienceManager>
 {
@@ -18,7 +19,7 @@ public class ExperienceManager : SingletonManager<ExperienceManager>
         ExperienceSystemData.ExpCurrency.OnCurrencyChanged -= GiveExp;
     }
 
-    private void GiveExp(Currency currency, float arg2)
+    private void GiveExp(Currency currency, BigInteger arg2)
     {
         if (arg2 > 0) RecursiveLevelUp();
     }
@@ -39,7 +40,7 @@ public class ExperienceManager : SingletonManager<ExperienceManager>
         }
         return Instance.ExperienceSystemData.GetNextLevelData();
     }
-    public static int GetPlayerExp()
+    public static BigInteger GetPlayerExp()
     {
         if (Instance == null)
         {

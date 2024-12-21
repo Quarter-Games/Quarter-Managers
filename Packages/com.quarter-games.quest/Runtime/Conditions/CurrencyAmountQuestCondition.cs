@@ -1,5 +1,6 @@
 using QG.Managers.Economy;
 using System;
+using System.Numerics;
 using UnityEngine;
 
 namespace QG.Managers.QuestSystem
@@ -7,10 +8,10 @@ namespace QG.Managers.QuestSystem
     public class CurrencyAmountQuestCondition : QuestCondition
     {
         public Currency currencyToCollect;
-        public int amountToCollect;
+        public BigInteger amountToCollect;
         public override float GetProgress()
         {
-            return currencyToCollect.GetAmount() / (float)amountToCollect;
+            return (float)currencyToCollect.GetAmount() / (float)amountToCollect;
         }
 
         public override bool IsConditionMet()
@@ -23,7 +24,7 @@ namespace QG.Managers.QuestSystem
             currencyToCollect.OnCurrencyChanged += OnCurrencyAmountChanged;
         }
 
-        private void OnCurrencyAmountChanged(Currency currency, float arg2)
+        private void OnCurrencyAmountChanged(Currency currency, BigInteger arg2)
         {
             OnConditionProgressChanged?.Invoke();
             if (IsConditionMet())

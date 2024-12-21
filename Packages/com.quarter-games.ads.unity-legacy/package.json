@@ -1,6 +1,6 @@
 {
   "name": "com.quarter-games.ads.unity-legacy",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "displayName": "QG Unity Legacy Ads",
   "description": "This is API for ads manager",
   "unity": "2022.3",

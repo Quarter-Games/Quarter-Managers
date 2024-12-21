@@ -1,4 +1,5 @@
 using System;
+using System.Numerics;
 
 namespace QG.Managers.Economy.Transactions
 {
@@ -6,9 +7,9 @@ namespace QG.Managers.Economy.Transactions
     public class CurrencyToCurrencyTransaction : Transaction
     {
         public Currency ReducedCurrency;
-        public int Cost;
+        public BigInteger Cost;
         public Currency GainedCurrency;
-        public int Gain;
+        public BigInteger Gain;
 
         public override void Execute(ICurrencyHandler sender, ICurrencyHandler reciever)
         {

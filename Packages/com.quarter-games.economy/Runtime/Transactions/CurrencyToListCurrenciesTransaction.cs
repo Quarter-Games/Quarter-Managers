@@ -2,13 +2,14 @@ using QG.Managers.Economy;
 using QG.Managers.Economy.Transactions;
 using System;
 using System.Collections.Generic;
+using System.Numerics;
 using UnityEngine;
 
 public class CurrencyToListCurrenciesTransaction : Transaction
 {
     public Currency ReducedCurrency;
 
-    public int Cost;
+    public BigInteger Cost;
 
     public List<CurrencyAndCost> CurrenciesAndCosts;
     public override void Execute(ICurrencyHandler sender, ICurrencyHandler reciever)

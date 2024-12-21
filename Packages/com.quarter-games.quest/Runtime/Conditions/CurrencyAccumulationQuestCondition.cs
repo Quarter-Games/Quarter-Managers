@@ -1,6 +1,7 @@
 using QG.Managers.Economy;
 using QG.Managers.SaveSystem.Basic;
 using System;
+using System.Numerics;
 using UnityEngine;
 
 namespace QG.Managers.QuestSystem
@@ -9,7 +10,7 @@ namespace QG.Managers.QuestSystem
     {
         [SerializeField] Currency currencyToCollect;
         [SerializeField] int amountToCollect;
-        private int startAmount;
+        private BigInteger startAmount;
         private bool _isStarted;
         public override float GetProgress()
         {
@@ -30,7 +31,7 @@ namespace QG.Managers.QuestSystem
             currencyToCollect.OnCurrencyChanged += OnCurrencyAmountChanged;
         }
 
-        private void OnCurrencyAmountChanged(Currency currency, float arg2)
+        private void OnCurrencyAmountChanged(Currency currency, BigInteger arg2)
         {
             OnConditionProgressChanged?.Invoke();
             if (IsConditionMet())

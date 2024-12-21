@@ -1,4 +1,5 @@
 using System;
+using System.Numerics;
 using System.Threading.Tasks;
 using UnityEngine;
 
@@ -41,31 +42,32 @@ namespace QG.Managers.Economy
         }
         public string UniqueID => "Player/";
         #region Static Methods
-        async public static Task<int> GetCurrencyAmount(Currency currency, ICurrencyHandler handler)
+        async public static Task<BigInteger> GetCurrencyAmount(Currency currency, ICurrencyHandler handler)
         {
             if (Instance == null) LoadFallBackManager();
             return await Instance.GetAmount(currency, handler);
         }
-        async public static void IncrementCurrency(Currency currency, int amount, ICurrencyHandler handler)
+        async public static void IncrementCurrency(Currency currency, BigInteger amount, ICurrencyHandler handler)
         {
             if (Instance == null) LoadFallBackManager();
             await Instance.Increment(currency, amount, handler);
         }
-        async public static void DecrementCurrency(Currency currency, int amount, ICurrencyHandler handler)
+        async public static void DecrementCurrency(Currency currency, BigInteger amount, ICurrencyHandler handler)
         {
             if (Instance == null) LoadFallBackManager();
             await Instance.Decrement(currency, amount, handler);
         }
         #endregion
         #region Abstract Methods
-        abstract public Task<int> GetAmount(Currency currency, ICurrencyHandler handler);
-        abstract public Task Increment(Currency currency, int amount, ICurrencyHandler handler);
-        abstract public Task Decrement(Currency currency, int amount, ICurrencyHandler handler);
+        abstract public Task<BigInteger> GetAmount(Currency currency, ICurrencyHandler handler);
+        abstract public Task Increment(Currency currency, BigInteger amount, ICurrencyHandler handler);
+        abstract public Task Decrement(Currency currency, BigInteger amount, ICurrencyHandler handler);
 
-        public void SetCurrencyData(Currency currency, int amount)
+        public void SetCurrencyData(Currency currency, BigInteger amount)
         {
-
+            
         }
+
         #endregion
     }
 }

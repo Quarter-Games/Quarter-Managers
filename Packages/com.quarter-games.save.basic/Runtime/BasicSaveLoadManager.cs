@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Numerics;
 using System.Threading.Tasks;
 
 namespace QG.Managers.SaveSystem.Basic
@@ -17,6 +18,9 @@ namespace QG.Managers.SaveSystem.Basic
 
         public static void CreateClusterForCaller(object caller)
         {
+
+            if (Instance == null) LoadFallBackManager();
+            if (caller == null) caller = Instance;
             if (!BufferClusters.ContainsKey(caller))
             {
                 BufferClusters.Add(caller, new Dictionary<string, object>());
@@ -25,6 +29,7 @@ namespace QG.Managers.SaveSystem.Basic
         public static void SaveCluster(object caller)
         {
             CreateClusterForCaller(caller);
+            if (caller == null) caller = Instance;
             if (Instance == null) return;
             Instance.SaveClusterImediate(caller);
         }
@@ -33,6 +38,7 @@ namespace QG.Managers.SaveSystem.Basic
         {
             CreateClusterForCaller(caller);
 
+            if (caller == null) caller = Instance;
             if (BufferClusters[caller].ContainsKey(key))
             {
                 return (int)BufferClusters[caller][key];
@@ -50,6 +56,7 @@ namespace QG.Managers.SaveSystem.Basic
         {
             CreateClusterForCaller(caller);
 
+            if (caller == null) caller = Instance;
             if (BufferClusters[caller].ContainsKey(key))
             {
                 return (string)BufferClusters[caller][key];
@@ -67,6 +74,7 @@ namespace QG.Managers.SaveSystem.Basic
         {
             CreateClusterForCaller(caller);
 
+            if (caller == null) caller = Instance;
             if (BufferClusters[caller].ContainsKey(key))
             {
                 return (float)BufferClusters[caller][key];
@@ -83,6 +91,7 @@ namespace QG.Managers.SaveSystem.Basic
         async public static Task<T> GetData<T>(string key, T defaultValue = default, EnumSaveSetting saveType = EnumSaveSetting.AsString, object caller = null) where T : Enum
         {
             CreateClusterForCaller(caller);
+            if (caller == null) caller = Instance;
             if (BufferClusters[caller].ContainsKey(key))
             {
                 if (saveType == EnumSaveSetting.AsString) return (T)Enum.Parse(typeof(T), BufferClusters[caller][key] as string);
@@ -99,12 +108,31 @@ namespace QG.Managers.SaveSystem.Basic
             else BufferClusters[caller].Add(key, Convert.ToInt32(value));
             return value;
         }
+        async public static Task<BigInteger> GetData(string key, BigInteger defaultValue = default, object caller = null)
+        {
+            CreateClusterForCaller(caller);
+
+            if (caller == null) caller = Instance;
+            if (BufferClusters[caller].ContainsKey(key))
+            {
+                return (BigInteger)BufferClusters[caller][key];
+            }
+            if (Instance == null)
+            {
+                BufferClusters[caller].Add(key, defaultValue);
+                return defaultValue;
+            }
+            var value = await Instance.GetValue(key, defaultValue);
+            BufferClusters[caller].Add(key, value);
+            return value;
+        }
         #endregion
 
         #region SetMethods
         public static void SetData(string key, int value, object caller = null, bool saveImediate = false)
         {
             CreateClusterForCaller(caller);
+            if (caller == null) caller = Instance;
             BufferClusters[caller][key] = value;
             if (Instance == null) return;
             if (saveImediate) Instance.SaveClusterImediate(caller);
@@ -112,6 +140,7 @@ namespace QG.Managers.SaveSystem.Basic
         public static void SetData(string key, string value, object caller, bool saveImediate = false)
         {
             CreateClusterForCaller(caller);
+            if (caller == null) caller = Instance;
             BufferClusters[caller][key] = value;
             if (Instance == null) return;
             if (saveImediate) Instance.SaveClusterImediate(caller);
@@ -119,6 +148,7 @@ namespace QG.Managers.SaveSystem.Basic
         public static void SetData(string key, float value, object caller = null, bool saveImediate = false)
         {
             CreateClusterForCaller(caller);
+            if (caller == null) caller = Instance;
             BufferClusters[caller][key] = value;
             if (Instance == null) return;
             if (saveImediate) Instance.SaveClusterImediate(caller);
@@ -126,8 +156,17 @@ namespace QG.Managers.SaveSystem.Basic
         public static void SetData<T>(string key, T value, EnumSaveSetting saveType = EnumSaveSetting.AsString, object caller = null, bool saveImediate = false) where T : Enum
         {
             CreateClusterForCaller(caller);
+            if (caller == null) caller = Instance;
             if (saveType == EnumSaveSetting.AsString) BufferClusters[caller][key] = value.ToString();
             else BufferClusters[caller][key] = Convert.ToInt32(value);
+            if (Instance == null) return;
+            if (saveImediate) Instance.SaveClusterImediate(caller);
+        }
+        public static void SetData(string key, BigInteger value, object caller = null, bool saveImediate = false)
+        {
+            CreateClusterForCaller(caller);
+            if (caller == null) caller = Instance;
+            BufferClusters[caller][key] = value;
             if (Instance == null) return;
             if (saveImediate) Instance.SaveClusterImediate(caller);
         }
@@ -147,6 +186,7 @@ namespace QG.Managers.SaveSystem.Basic
         }
         public static void ClearKey(string key, object caller)
         {
+            if (caller == null) caller = Instance;
             BufferClusters[caller].Remove(key);
             if (Instance == null) return;
 
@@ -163,6 +203,7 @@ namespace QG.Managers.SaveSystem.Basic
         protected abstract Task<string> GetValue(string key, string defaultValue = "");
         protected abstract Task<float> GetValue(string key, float defaultValue = 0f);
         protected abstract Task<TEnum> GetValue<TEnum>(string key, TEnum defaultValue = default, EnumSaveSetting saveType = EnumSaveSetting.AsString) where TEnum : Enum;
+        protected abstract Task<BigInteger> GetValue(string key, BigInteger defaultValue = default);
         #endregion
 
         #region SetMethods
@@ -170,6 +211,7 @@ namespace QG.Managers.SaveSystem.Basic
         protected abstract void SetValue(string key, float value);
         protected abstract void SetValue(string key, string value);
         protected abstract void SetValue<T>(string key, T value, EnumSaveSetting saveSetting = EnumSaveSetting.AsString) where T : Enum;
+        protected abstract void SetValue(string key, BigInteger value);
         protected abstract void SaveClusterImediate(object caller);
         protected abstract void ClearAllData();
         protected abstract void ClearData(string key);

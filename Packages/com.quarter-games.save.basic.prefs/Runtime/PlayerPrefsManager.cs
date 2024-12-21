@@ -1,4 +1,5 @@
 using System;
+using System.Numerics;
 using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -24,6 +25,7 @@ namespace QG.Managers.SaveSystem.Basic.Prefs
             if (saveSetting == EnumSaveSetting.AsString) SetValue(key, value.ToString());
             else SetValue(key, Convert.ToInt32(value));
         }
+        protected override void SetValue(string key, BigInteger value) => SetValue(key, value.ToString());
         protected override void ClearAllData() => PlayerPrefs.DeleteAll();
         protected override void ClearData(string key) => PlayerPrefs.DeleteKey(key);
         #endregion
@@ -51,6 +53,12 @@ namespace QG.Managers.SaveSystem.Basic.Prefs
         {
             if (saveType == EnumSaveSetting.AsInt) return (T)Enum.ToObject(typeof(T), await GetValue(key, Convert.ToInt32(defaultValue)));
             return (T)Enum.Parse(typeof(T), await GetValue(key, defaultValue.ToString()));
+        }
+        async protected override Task<BigInteger> GetValue(string key, BigInteger defaultValue = default)
+        {
+            var task = new Task<BigInteger>(() => BigInteger.Parse(PlayerPrefs.GetString(key, defaultValue.ToString())));
+            task.RunSynchronously(TaskScheduler.Current);
+            return await task.ConfigureAwait(false);
         }
 
         protected override void SaveClusterImediate(object caller)

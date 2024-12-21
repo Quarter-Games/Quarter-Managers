@@ -1,4 +1,5 @@
 using System;
+using System.Numerics;
 using UnityEngine.Events;
 
 namespace QG.Managers.Economy.Transactions
@@ -7,7 +8,7 @@ namespace QG.Managers.Economy.Transactions
     public class CurrencyToGameActionTransaction : Transaction
     {
         public Currency ReducedCurrency;
-        public int Cost;
+        public BigInteger Cost;
         public UnityEvent Action;
         public void SetAction(UnityEvent action) => Action = action;
         public override void Execute(ICurrencyHandler sender, ICurrencyHandler reciever)

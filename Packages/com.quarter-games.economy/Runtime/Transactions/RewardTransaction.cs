@@ -1,10 +1,12 @@
+using System.Numerics;
+
 namespace QG.Managers.Economy.Transactions
 {
     [System.Serializable]
     public class RewardTransaction : Transaction
     {
         public Currency Currency;
-        public int Amount;
+        public BigInteger Amount;
 
         public override void Execute(ICurrencyHandler sender, ICurrencyHandler reciever)
         {
