@@ -9,7 +9,7 @@ public class CurrencyToListCurrenciesTransaction : Transaction
 {
     public Currency ReducedCurrency;
 
-    public BigInteger Cost;
+    public SerializedBigInteger Cost;
 
     public List<CurrencyAndCost> CurrenciesAndCosts;
     public override void Execute(ICurrencyHandler sender, ICurrencyHandler reciever)
@@ -65,6 +65,6 @@ public class CurrencyToListCurrenciesTransaction : Transaction
     [Serializable]
     public struct CurrencyAndCost
     {
-        public Currency Currency; public int Cost;
+        public Currency Currency; public SerializedBigInteger Cost;
     }
 }

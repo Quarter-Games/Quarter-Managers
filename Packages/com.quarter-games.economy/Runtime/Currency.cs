@@ -13,9 +13,9 @@ namespace QG.Managers.Economy
         [Tooltip("Unique ID for the currency. If it is changed, currency will be cleared")]
         public string currencyID;
         public Sprite sprite;
-        public BigInteger StartingAmount;
+        public SerializedBigInteger StartingAmount;
         [Tooltip("If Max Amount is equal to Starting Amount, the currency will have no limit.")]
-        public BigInteger MaxAmount;
+        public SerializedBigInteger MaxAmount;
         public BigInteger GetAmount(ICurrencyHandler handler = null) => EconomyManager.GetCurrencyAmount(this, handler).Result;
         public string GetAmountString(ICurrencyHandler handler = null) => new CurrencyValue(EconomyManager.GetCurrencyAmount(this, handler).Result).GetStringValue();
         public void Increment(BigInteger amount, ICurrencyHandler handler = null)
@@ -32,14 +32,14 @@ namespace QG.Managers.Economy
     [Serializable]
     public struct CurrencyValue
     {
-        public BigInteger Value;
+        public SerializedBigInteger Value;
         public CurrencyValue(BigInteger value)
         {
-            Value = value;
+            Value = new SerializedBigInteger(value);
         }
         public string GetStringValue()
         {
-            BigInteger value = Value;
+            BigInteger value = Value.ActualValue;
             List<string> suffixes = new List<string> { "", "K", "M", "B", "T", "aa", "ab", "ac", "ad", "ae", "af",
             "ag", "ah", "ai", "aj", "ak", "al", "am", "an", "ao", "ap", "aq", "ar", "as", "at", "au", "av", "aw", "ax", "ay", "az" };
             int index = 0;

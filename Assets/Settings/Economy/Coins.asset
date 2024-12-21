@@ -15,6 +15,7 @@ MonoBehaviour:
   currencyName: Coins
   currencyID: COINS
   sprite: {fileID: 0}
-  StartingAmount: 0
-  MaxAmount: 0
-  currencyToAdd: 5
+  StartingAmount:
+    _textValue: 0
+  MaxAmount:
+    _textValue: 0

@@ -7,9 +7,9 @@ namespace QG.Managers.Economy.Transactions
     public class CurrencyToCurrencyTransaction : Transaction
     {
         public Currency ReducedCurrency;
-        public BigInteger Cost;
+        public SerializedBigInteger Cost;
         public Currency GainedCurrency;
-        public BigInteger Gain;
+        public SerializedBigInteger Gain;
 
         public override void Execute(ICurrencyHandler sender, ICurrencyHandler reciever)
         {

@@ -6,7 +6,7 @@ namespace QG.Managers.Economy.Transactions
     public class RewardTransaction : Transaction
     {
         public Currency Currency;
-        public BigInteger Amount;
+        public SerializedBigInteger Amount;
 
         public override void Execute(ICurrencyHandler sender, ICurrencyHandler reciever)
         {

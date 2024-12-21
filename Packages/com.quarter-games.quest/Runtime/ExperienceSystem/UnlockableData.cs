@@ -17,7 +17,7 @@ public class UnlockableData : ScriptableObject
     public bool TryUnlock(int currentLevel, bool autoPay = false)
     {
         if (RequiredLevel > currentLevel) return false;
-        if (ToUnlock.Cost == 0)
+        if (ToUnlock.Cost.ActualValue == 0)
         {
             Unlock();
             return true;
@@ -33,7 +33,7 @@ public class UnlockableData : ScriptableObject
     public LockStatus GetStatus(int currentLevel)
     {
         if (RequiredLevel > currentLevel) return LockStatus.Locked;
-        if (ToUnlock.Cost == 0) return LockStatus.Unlocked;
+        if (ToUnlock.Cost.ActualValue == 0) return LockStatus.Unlocked;
         return QG.Managers.SaveSystem.Basic.BasicSaveLoadManager.GetData(UniqueID, LockStatus.Locked).Result;
     }
     public void Unlock()
