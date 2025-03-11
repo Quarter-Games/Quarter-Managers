@@ -32,7 +32,7 @@ namespace QG.Managers.Economy
                     Debug.LogError("Currency ID is not set for " + currency.currencyName);
                     continue;
                 }
-                handler.SetCurrencyData(currency, GetAmount(currency, handler).Result);
+                handler.SetCurrencyData(currency, GetAmount(currency, handler));
             }
         }
 
@@ -42,26 +42,26 @@ namespace QG.Managers.Economy
         }
         public string UniqueID => "Player/";
         #region Static Methods
-        async public static Task<BigInteger> GetCurrencyAmount(Currency currency, ICurrencyHandler handler)
+        public static BigInteger GetCurrencyAmount(Currency currency, ICurrencyHandler handler)
         {
             if (Instance == null) LoadFallBackManager();
-            return await Instance.GetAmount(currency, handler);
+            return Instance.GetAmount(currency, handler);
         }
-        async public static void IncrementCurrency(Currency currency, BigInteger amount, ICurrencyHandler handler)
+        public static void IncrementCurrency(Currency currency, BigInteger amount, ICurrencyHandler handler)
         {
             if (Instance == null) LoadFallBackManager();
-            await Instance.Increment(currency, amount, handler);
+            Instance.Increment(currency, amount, handler);
         }
-        async public static void DecrementCurrency(Currency currency, BigInteger amount, ICurrencyHandler handler)
+        public static void DecrementCurrency(Currency currency, BigInteger amount, ICurrencyHandler handler)
         {
             if (Instance == null) LoadFallBackManager();
-            await Instance.Decrement(currency, amount, handler);
+            Instance.Decrement(currency, amount, handler);
         }
         #endregion
         #region Abstract Methods
-        abstract public Task<BigInteger> GetAmount(Currency currency, ICurrencyHandler handler);
-        abstract public Task Increment(Currency currency, BigInteger amount, ICurrencyHandler handler);
-        abstract public Task Decrement(Currency currency, BigInteger amount, ICurrencyHandler handler);
+        abstract public BigInteger GetAmount(Currency currency, ICurrencyHandler handler);
+        abstract public void Increment(Currency currency, BigInteger amount, ICurrencyHandler handler);
+        abstract public void Decrement(Currency currency, BigInteger amount, ICurrencyHandler handler);
 
         public void SetCurrencyData(Currency currency, BigInteger amount)
         {

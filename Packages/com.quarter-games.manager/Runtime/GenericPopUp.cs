@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine.UI;
 using QG.Managers;
 
-public class GenericPopUp<TSettings> : MonoBehaviour where TSettings : PopUpSettings
+public class GenericPopUp<TSettings> : MonoBehaviour where TSettings : PopUpData
 {
     [SerializeField] TMP_Text Description;
     [SerializeField] TMP_Text Title;
@@ -25,7 +25,6 @@ public class GenericPopUp<TSettings> : MonoBehaviour where TSettings : PopUpSett
     protected TSettings _data;
     virtual public void Init(TSettings data)
     {
-        data.OnPopUpSettingsChanged += () => UpdateData(data);
         UpdateData(data);
 
     }
@@ -38,18 +37,18 @@ public class GenericPopUp<TSettings> : MonoBehaviour where TSettings : PopUpSett
         }
         else gameObject.SetActive(true);
         _data = data;
-        Title.text = data.Data.Title;
-        Description.text = data.Data.Description;
-        Image.sprite = data.Data.Image;
-        Image.gameObject.SetActive(data.Data.Image != null);
-        PopUpCanvas.sortingOrder = data.Data.Priority;
-        BackGround.color = new Color(BackGround.color.r, BackGround.color.g, BackGround.color.b, data.Data.BackGroundAlpha);
+        Title.text = data.Title;
+        Description.text = data.Description;
+        Image.sprite = data.Image;
+        Image.gameObject.SetActive(data.Image != null);
+        PopUpCanvas.sortingOrder = data.Priority;
+        BackGround.color = new Color(BackGround.color.r, BackGround.color.g, BackGround.color.b, data.BackGroundAlpha);
 
-        CloseButton.gameObject.SetActive(data.Data.isClosable);
+        CloseButton.gameObject.SetActive(data.isClosable);
 
-        SetUpButton(LeftButton, data.Data.LeftButton);
-        SetUpButton(RightButton, data.Data.RightButton);
-        data.Data.UpdateEvent += () => UpdateData(data);
+        SetUpButton(LeftButton, data.LeftButton);
+        SetUpButton(RightButton, data.RightButton);
+        data.UpdateEvent += () => UpdateData(data);
     }
     virtual protected void SetUpButton(ButtonSetUpData buttonData, PopUpButton settings)
     {
@@ -85,24 +84,24 @@ public class GenericPopUp<TSettings> : MonoBehaviour where TSettings : PopUpSett
     }
     virtual public void LeftButtonClick()
     {
-        _data.Data.LeftButton.OnPress?.Invoke();
+        _data.LeftButton.OnPress?.Invoke();
         Close();
     }
     virtual public void RightButtonClick()
     {
-        _data.Data.RightButton.OnPress?.Invoke();
+        _data.RightButton.OnPress?.Invoke();
         Close();
     }
     virtual public void CloseButtonClick()
     {
-        _data.Data.OnCloseClick?.Invoke();
+        _data.OnCloseClick?.Invoke();
         Close();
     }
     virtual public void ClickOnBackground()
     {
-        if (_data.Data.isBackgroundClosable)
+        if (_data.isBackgroundClosable)
         {
-            _data.Data.OnCloseClick?.Invoke();
+            _data.OnCloseClick?.Invoke();
             Close();
         }
     }
@@ -116,8 +115,7 @@ public class GenericPopUp<TSettings> : MonoBehaviour where TSettings : PopUpSett
     }
     virtual protected void OnDestroy()
     {
-        _data.Data.UpdateEvent += () => UpdateData(_data);
-        _data.OnPopUpSettingsChanged -= () => UpdateData(_data);
+        _data.UpdateEvent += () => UpdateData(_data);
     }
     [Serializable]
     public class ButtonSetUpData

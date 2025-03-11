@@ -25,50 +25,51 @@ namespace QG.Managers.SaveSystem.Basic.Prefs
             if (saveSetting == EnumSaveSetting.AsString) SetValue(key, value.ToString());
             else SetValue(key, Convert.ToInt32(value));
         }
-        protected override void SetValue(string key, BigInteger value) => SetValue(key, value.ToString());
+        protected override void SetValue(string key, bool value) => PlayerPrefs.SetInt(key, value ? 1 : 0);
+        protected override void SetValue(string key, BigInteger value) => SetValue(key, value.ToString() as string);
         protected override void ClearAllData() => PlayerPrefs.DeleteAll();
         protected override void ClearData(string key) => PlayerPrefs.DeleteKey(key);
         #endregion
 
         #region GetMethods
-        async protected override Task<int> GetValue(string key, int defaultValue = 0)
+        protected override int GetValue(string key, int defaultValue = 0)
         {
-            var task = new Task<int>(() => PlayerPrefs.GetInt(key, defaultValue));
-            task.RunSynchronously(TaskScheduler.Current);
-            return await task.ConfigureAwait(false);
+            return PlayerPrefs.GetInt(key, defaultValue);
         }
-        async protected override Task<string> GetValue(string key, string defaultValue = "")
+        protected override string GetValue(string key, string defaultValue = "")
         {
-            var task = new Task<string>(() => PlayerPrefs.GetString(key, defaultValue));
-            task.RunSynchronously(TaskScheduler.Current);
-            return await task.ConfigureAwait(false);
+            return PlayerPrefs.GetString(key, defaultValue);
         }
-        async protected override Task<float> GetValue(string key, float defaultValue = 0f)
+        protected override float GetValue(string key, float defaultValue = 0f)
         {
-            var task = new Task<float>(() => PlayerPrefs.GetFloat(key, defaultValue));
-            task.RunSynchronously(TaskScheduler.Current);
-            return await task.ConfigureAwait(false);
+            return PlayerPrefs.GetFloat(key, defaultValue);
         }
-        async protected override Task<T> GetValue<T>(string key, T defaultValue, EnumSaveSetting saveType = EnumSaveSetting.AsString)
+        protected override T GetValue<T>(string key, T defaultValue, EnumSaveSetting saveType = EnumSaveSetting.AsString)
         {
-            if (saveType == EnumSaveSetting.AsInt) return (T)Enum.ToObject(typeof(T), await GetValue(key, Convert.ToInt32(defaultValue)));
-            return (T)Enum.Parse(typeof(T), await GetValue(key, defaultValue.ToString()));
+            if (saveType == EnumSaveSetting.AsInt) return (T)Enum.ToObject(typeof(T), GetValue(key, Convert.ToInt32(defaultValue)));
+            return (T)Enum.Parse(typeof(T), GetValue(key, defaultValue.ToString()));
         }
-        async protected override Task<BigInteger> GetValue(string key, BigInteger defaultValue = default)
+        protected override BigInteger GetValue(string key, BigInteger defaultValue = default)
         {
-            var task = new Task<BigInteger>(() => BigInteger.Parse(PlayerPrefs.GetString(key, defaultValue.ToString())));
-            task.RunSynchronously(TaskScheduler.Current);
-            return await task.ConfigureAwait(false);
+            return BigInteger.Parse(PlayerPrefs.GetString(key, defaultValue.ToString()));
         }
-
+        protected override bool GetValue(string key, bool defaultValue = false)
+        {
+            return PlayerPrefs.GetInt(key, defaultValue ? 1 : 0) == 1;
+        }
         protected override void SaveClusterImediate(object caller)
         {
             foreach (var key in BufferClusters[caller].Keys)
             {
+                if (!Delta.Contains(key)) continue;
                 var type = BufferClusters[caller][key].GetType();
                 if (BufferClusters[caller][key] is int intValue) SetValue(key, intValue);
                 else if (BufferClusters[caller][key] is float floatValue) SetValue(key, floatValue);
                 else if (BufferClusters[caller][key] is string stringValue) SetValue(key, stringValue);
+                else if (BufferClusters[caller][key] is System.Numerics.BigInteger big) SetValue(key, big);
+                else if (BufferClusters[caller][key] is bool boolValue) SetValue(key, boolValue);
+                else SetValue(key, BufferClusters[caller][key].ToString());
+                Delta.Remove(key);
             }
         }
         #endregion

@@ -1,6 +1,6 @@
 {
   "name": "com.quarter-games.save.basic",
-  "version": "1.0.5",
+  "version": "1.0.8",
   "displayName": "QG Basic Save System",
   "description": "This is basic save system",
   "unity": "2022.3",
@@ -25,6 +25,6 @@
   "homepage": "https://github.com/Quarter-Games/Quarter-Managers#readme",
   "hideInEditor": false,
   "dependencies": {
-    "com.quarter-games.manager": "1.0.12"
+    "com.quarter-games.manager": "1.0.13"
   }
 }

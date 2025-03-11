@@ -9,22 +9,22 @@ namespace QG.Managers.Economy.BasicSave
     [AddComponentMenu("QG/Managers/Basic Economy Manager")]
     sealed internal class BasicSaveEconomyManager : EconomyManager
     {
-        async public override Task Decrement(Currency currency, BigInteger amount, ICurrencyHandler handler)
+        public override void Decrement(Currency currency, BigInteger amount, ICurrencyHandler handler)
         {
             if (handler == null) handler = this;
-            BasicSaveLoadManager.SetData(handler.UniqueID + currency.currencyID, await GetAmount(currency, handler) - amount, handler);
+            BasicSaveLoadManager.SetData(handler.UniqueID + currency.currencyID, GetAmount(currency, handler) - amount, handler);
         }
 
-        async public override Task<BigInteger> GetAmount(Currency currency, ICurrencyHandler handler)
+        public override BigInteger GetAmount(Currency currency, ICurrencyHandler handler)
         {
             if (handler == null) handler = this;
-            return await BasicSaveLoadManager.GetData(handler.UniqueID + currency.currencyID, currency.StartingAmount, handler);
+            return BasicSaveLoadManager.GetData(handler.UniqueID + currency.currencyID, currency.StartingAmount, handler);
         }
 
-        async public override Task Increment(Currency currency, BigInteger amount, ICurrencyHandler handler)
+        public override void Increment(Currency currency, BigInteger amount, ICurrencyHandler handler)
         {
             if (handler == null) handler = this;
-            BasicSaveLoadManager.SetData(handler.UniqueID + currency.currencyID, await GetAmount(currency, handler) + amount, handler);
+            BasicSaveLoadManager.SetData(handler.UniqueID + currency.currencyID, GetAmount(currency, handler) + amount, handler);
         }
 
         public override bool IsReady() => true;

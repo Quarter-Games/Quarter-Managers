@@ -25,28 +25,25 @@ namespace QG.Managers.SoundSystem
         public override void Init()
         {
             base.Init();
-            StartCoroutine(Initialization());
+            Initialization();
         }
-        private IEnumerator Initialization()
+        private void Initialization()
         {
-            Task loading = Task.Run(LoadSettings);
-            yield return new WaitUntil(() => loading.IsCompleted);
+            LoadSettings();
             isReady = true;
         }
 
-        async Task LoadSettings()
+        void LoadSettings()
         {
-            List<Task> loadingTasks = new();
             foreach (var mixer in MixerGroups)
             {
-                loadingTasks.Add(LoadMixerSettings(mixer));
+                LoadMixerSettings(mixer);
             }
-            await Task.WhenAll(loadingTasks);
         }
 
-        async Task LoadMixerSettings(AudioMixerGroup mixer)
+        void LoadMixerSettings(AudioMixerGroup mixer)
         {
-            float volume = await BasicSaveLoadManager.GetData(mixer.name + VOLUME_PARAM_NAME, 0f);
+            float volume = BasicSaveLoadManager.GetData(mixer.name + VOLUME_PARAM_NAME, 0f);
             mixer.audioMixer.SetFloat(mixer.name + VOLUME_PARAM_NAME, volume);
         }
 
@@ -65,10 +62,10 @@ namespace QG.Managers.SoundSystem
             if (Instance != null) Instance.ChangeMixerTo(settings, time);
             else LoadFallBackManager().ChangeMixerTo(settings, time);
         }
-        public static void ChangeVolumeMixer(AudioMixerGroup mixer, float endValue, float time, Func<bool> predicateToReturn = null)
+        public static void ChangeVolumeMixer(AudioMixerGroup mixer, float endValue, float time, Func<bool> predicateToReturn = null,bool saveValue = true)
         {
-            if (Instance != null) Instance.ChangeMixerVolume(mixer, endValue, time, predicateToReturn);
-            else LoadFallBackManager().ChangeMixerVolume(mixer, endValue, time, predicateToReturn);
+            if (Instance != null) Instance.ChangeMixerVolume(mixer, endValue, time, predicateToReturn,saveValue);
+            else LoadFallBackManager().ChangeMixerVolume(mixer, endValue, time, predicateToReturn,saveValue);
         }
 
         private void PlayTrack(AudioSettings settings)
@@ -107,12 +104,12 @@ namespace QG.Managers.SoundSystem
             }
             PlayTrack(settings);
         }
-        private void ChangeMixerVolume(AudioMixerGroup mixer, float endValue, float time, Func<bool> predicateToReturn = null)
+        private void ChangeMixerVolume(AudioMixerGroup mixer, float endValue, float time, Func<bool> predicateToReturn = null, bool saveValue = true)
         {
             mixer.audioMixer.GetFloat(mixer.name + VOLUME_PARAM_NAME, out float volume);
-            StartCoroutine(LerpMixerVolume(mixer, endValue, time, predicateToReturn));
+            StartCoroutine(LerpMixerVolume(mixer, endValue, time, predicateToReturn, saveValue));
         }
-        private IEnumerator LerpMixerVolume(AudioMixerGroup mixer, float targetVolume, float time, Func<bool> predicateToReturn = null)
+        private IEnumerator LerpMixerVolume(AudioMixerGroup mixer, float targetVolume, float time, Func<bool> predicateToReturn = null,bool saveValue = true)
         {
             mixer.audioMixer.GetFloat(mixer.name + VOLUME_PARAM_NAME, out float volume);
             float elapsedTime = 0;
@@ -135,6 +132,7 @@ namespace QG.Managers.SoundSystem
                 yield return new WaitForEndOfFrame();
             }
             mixer.audioMixer.SetFloat(mixer.name + VOLUME_PARAM_NAME, volume);
+            if (saveValue) BasicSaveLoadManager.SetData(mixer.name + VOLUME_PARAM_NAME, targetVolume);
         }
     }
 }
