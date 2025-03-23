@@ -19,12 +19,12 @@ namespace QG.Managers.Economy
         public SerializedBigInteger MaxAmount;
         public BigInteger GetAmount(ICurrencyHandler handler = null) => EconomyManager.GetCurrencyAmount(this, handler);
         public string GetAmountString(ICurrencyHandler handler = null) => new CurrencyValue(EconomyManager.GetCurrencyAmount(this, handler)).GetStringValue();
-        public void Increment(BigInteger amount, ICurrencyHandler handler = null)
+        virtual public void Increment(BigInteger amount, ICurrencyHandler handler = null)
         {
             EconomyManager.IncrementCurrency(this, amount, handler);
             OnCurrencyChanged?.Invoke(this, amount);
         }
-        public void Decrement(BigInteger amount, ICurrencyHandler handler = null)
+        virtual public void Decrement(BigInteger amount, ICurrencyHandler handler = null)
         {
             EconomyManager.DecrementCurrency(this, amount, handler);
             OnCurrencyChanged?.Invoke(this, -amount);
@@ -34,7 +34,7 @@ namespace QG.Managers.Economy
         {
             Debug.Log(new CurrencyValue(StartingAmount.ActualValue).GetStringValue() + " " + new CurrencyValue(MaxAmount.ActualValue).GetStringValue());
         }
-        public Sprite GetIcon(string Key)
+        virtual public Sprite GetIcon(string Key)
         {
             if (Icons == null||Icons.Count==0) return null;
             return Icons.FirstOrDefault(x => x.Name == Key).Icon;

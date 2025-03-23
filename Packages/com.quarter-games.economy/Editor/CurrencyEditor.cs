@@ -14,7 +14,7 @@ namespace QG.Managers.Economy.Editor
             GUILayout.Space(10);
             Debug.Log("Currency ID: " + currency.currencyID);
             var isPressed = GUILayout.Button("Add Value");
-            var value = BasicSaveLoadManager.GetData("Player/" + currency.currencyID, currency.StartingAmount.ActualValue, null).Result;
+            var value = BasicSaveLoadManager.GetData("Player/" + currency.currencyID, currency.StartingAmount.ActualValue, null);
             GUILayout.Label(new CurrencyValue(value).GetStringValue());
 
         }
