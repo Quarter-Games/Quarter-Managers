@@ -11,7 +11,14 @@ namespace QG.Managers
             if (Instance == null)
             {
                 Instance = (T)this;
-                DontDestroyOnLoad(gameObject);
+                try
+                {
+                    DontDestroyOnLoad(gameObject);
+                }
+                catch (System.Exception e)
+                {
+                    Debug.LogWarning("SingletonManager: " + e.Message);
+                }
             }
             else
             {

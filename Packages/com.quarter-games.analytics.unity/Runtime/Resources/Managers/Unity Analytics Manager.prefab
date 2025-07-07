@@ -45,5 +45,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isReady: 0
-  ConsentPopUp: {fileID: 7011707071711360170, guid: 1bcf9e8e9723cee48aacc873fac9b424, type: 3}
-  PopUpSettings: {fileID: 11400000, guid: fa4c0d4163d2a7248b2c3a5130f297e8, type: 2}
+  ConsentPopUp: {fileID: 341666280487435434, guid: 1bcf9e8e9723cee48aacc873fac9b424, type: 3}
+  PopUpSettings:
+    Title: 
+    Description: 
+    Image: {fileID: 0}
+    isClosable: 0
+    isBackgroundClosable: 0
+    LeftButton:
+      Type: 0
+      Text: 
+      Icon: {fileID: 0}
+      IsIconOnLeft: 0
+    RightButton:
+      Type: 0
+      Text: 
+      Icon: {fileID: 0}
+      IsIconOnLeft: 0
+    Priority: 0
+    BackGroundAlpha: 0.66

@@ -1,6 +1,6 @@
 {
   "name": "com.quarter-games.analytics",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "displayName": "QG Analytics",
   "description": "This is API for analytics manager",
   "unity": "2022.3",
@@ -25,6 +25,6 @@
   "homepage": "https://github.com/Quarter-Games/Quarter-Managers#readme",
   "hideInEditor": false,
   "dependencies": {
-    "com.quarter-games.save.basic": "1.0.0"
+    "com.quarter-games.save.basic": "1.0.5"
   }
 }

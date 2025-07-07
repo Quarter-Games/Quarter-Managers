@@ -34,7 +34,7 @@ public class UnlockableData : ScriptableObject
     {
         if (RequiredLevel > currentLevel) return LockStatus.Locked;
         if (ToUnlock.Cost.ActualValue == 0) return LockStatus.Unlocked;
-        return QG.Managers.SaveSystem.Basic.BasicSaveLoadManager.GetData(UniqueID, LockStatus.Locked).Result;
+        return QG.Managers.SaveSystem.Basic.BasicSaveLoadManager.GetData(UniqueID, LockStatus.Locked);
     }
     public void Unlock()
     {

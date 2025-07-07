@@ -18,7 +18,7 @@ namespace QG.Managers.Economy.Transactions
             Action?.Invoke();
         }
 
-        public override bool IsPossible(ICurrencyHandler sender) => ReducedCurrency.GetAmount(sender) >= Cost;
+        public override bool IsPossible(ICurrencyHandler sender) => ReducedCurrency.IsPossible(-Cost.ActualValue, sender);
 
         public override void ExecuteFirst(ICurrencyHandler sender)
         {

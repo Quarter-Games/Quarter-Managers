@@ -2,12 +2,14 @@ using System;
 using System.Numerics;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.U2D.Animation;
 
 namespace QG.Managers.Economy
 {
     abstract public class EconomyManager : SingletonManager<EconomyManager>, ICurrencyHandler
     {
         public CurrencyList CurrencyList;
+        public SpriteLibrary Icons;
 
         private void OnEnable()
         {
@@ -35,7 +37,11 @@ namespace QG.Managers.Economy
                 handler.SetCurrencyData(currency, GetAmount(currency, handler));
             }
         }
-
+        public static Sprite GetIcon(Currency currency, string Key)
+        {
+            if (Instance == null) LoadFallBackManager();
+            return Instance.Icons.GetSprite(currency.name, Key);
+        }
         private void OnDisable()
         {
             ICurrencyHandler.CurrencyLoadRequest -= CurrencyLoadRequest;
@@ -65,7 +71,7 @@ namespace QG.Managers.Economy
 
         public void SetCurrencyData(Currency currency, BigInteger amount)
         {
-            
+
         }
 
         #endregion

@@ -10,8 +10,8 @@ namespace QG.Managers.Analytics.UnityAnalytics
     {
         [SerializeField] private bool _isReady = false;
         override public bool IsReady() => _isReady;
-        [SerializeField] GenericPopUp<PopUpSettings> ConsentPopUp;
-        [SerializeField] PopUpSettings PopUpSettings;
+        [SerializeField] PopUp ConsentPopUp;
+        [SerializeField] PopUpData PopUpSettings;
         public override void Init()
         {
             base.Init();
@@ -29,8 +29,8 @@ namespace QG.Managers.Analytics.UnityAnalytics
         }
         public void AskToConsent()
         {
-            PopUpSettings.Data.LeftButton.OnPress = () => Consent(true);
-            PopUpSettings.Data.RightButton.OnPress = () => Consent(false);
+            PopUpSettings.LeftButton.OnPress = () => Consent(true);
+            PopUpSettings.RightButton.OnPress = () => Consent(false);
             var popUp = Instantiate(ConsentPopUp, transform);
             popUp.Init(PopUpSettings);
 

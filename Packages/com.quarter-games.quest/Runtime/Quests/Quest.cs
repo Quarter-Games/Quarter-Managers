@@ -40,7 +40,7 @@ namespace QG.Managers.QuestSystem
         }
         virtual public QuestStatus GetStatus()
         {
-            return SaveSystem.Basic.BasicSaveLoadManager.GetData(ID, QuestStatus.NotStarted).Result;
+            return SaveSystem.Basic.BasicSaveLoadManager.GetData(ID, QuestStatus.NotStarted);
         }
         virtual public void StartQuest()
         {

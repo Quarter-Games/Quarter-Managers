@@ -13,7 +13,6 @@ namespace QG.Managers.Economy
         public string currencyName;
         [Tooltip("Unique ID for the currency. If it is changed, currency will be cleared")]
         public string currencyID;
-        [SerializeField] List<CurrencyIcon> Icons = new();
         public SerializedBigInteger StartingAmount;
         [Tooltip("If Max Amount is equal to Starting Amount, the currency will have no limit.")]
         public SerializedBigInteger MaxAmount;
@@ -34,10 +33,19 @@ namespace QG.Managers.Economy
         {
             Debug.Log(new CurrencyValue(StartingAmount.ActualValue).GetStringValue() + " " + new CurrencyValue(MaxAmount.ActualValue).GetStringValue());
         }
-        virtual public Sprite GetIcon(string Key)
+        public virtual bool IsPossible(BigInteger change, ICurrencyHandler sender = null)
         {
-            if (Icons == null||Icons.Count==0) return null;
-            return Icons.FirstOrDefault(x => x.Name == Key).Icon;
+            BigInteger amount = GetAmount(sender);
+            var next = amount + change;
+            if (MaxAmount.ActualValue == 0)
+            {
+                return next >= 0;
+            }
+            else return next >= 0 && next <= MaxAmount;
+        }
+        virtual public Sprite GetIcon(string Key, BigInteger amount = default)
+        {
+            return EconomyManager.GetIcon(this, Key);
         }
     }
     [Serializable]

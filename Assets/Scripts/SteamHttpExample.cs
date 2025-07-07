@@ -1,0 +1,76 @@
+using Steamworks;
+using System.Net.Http;
+using UnityEngine;
+
+public class SteamHttpExample : MonoBehaviour
+{
+    private HTTPRequestHandle requestHandle;
+    private CallResult<HTTPRequestCompleted_t> callResult;
+
+    void Start()
+    {
+        SteamAPI.Init();
+        Debug.Log(SteamAPI.IsSteamRunning());
+        const string URL = "https://api.steampowered.com/ISteamApps/UpToDateCheck/v1/";
+        const string APP_ID = "3419430";
+        string version = Application.version; //Not sure if this is the version that it asks for. It may be a buildID. somehow API 
+        string QUERRY = $"{URL}?appid={APP_ID}&version={version}";
+        requestHandle = Steamworks.SteamHTTP.CreateHTTPRequest(EHTTPMethod.k_EHTTPMethodGET, QUERRY);
+
+        callResult = CallResult<HTTPRequestCompleted_t>.Create(OnRequestCompleted);
+        Debug.Log("Sending Request");
+        bool sent = SteamHTTP.SendHTTPRequest(requestHandle, out SteamAPICall_t outHandle);
+        if (!sent)
+        {
+            Debug.LogError("Failed to send HTTP request");
+            return;
+        }
+        Debug.Log(outHandle.m_SteamAPICall);
+
+        // Assign the call result to listen for completion of this request
+        callResult.Set(outHandle);
+        SteamAPI.RunCallbacks();
+    }
+    void Update()
+    {
+        if (SteamAPI.IsSteamRunning())
+        {
+            SteamAPI.RunCallbacks();
+        }
+    }
+
+    private void OnRequestCompleted(HTTPRequestCompleted_t param, bool bIOFailure)
+    {
+        if (bIOFailure)
+        {
+            Debug.LogError("HTTP request failed due to IO failure");
+            return;
+        }
+
+        if (param.m_eStatusCode != EHTTPStatusCode.k_EHTTPStatusCode200OK)
+        {
+            Debug.LogError($"HTTP request failed with status code {param.m_eStatusCode}");
+            return;
+        }
+
+        bool gotSize = SteamHTTP.GetHTTPResponseBodySize(param.m_hRequest, out uint size);
+        if (!gotSize || size == 0)
+        {
+            Debug.LogWarning("Response body empty");
+            return;
+        }
+
+        byte[] data = new byte[size];
+        bool gotData = SteamHTTP.GetHTTPResponseBodyData(param.m_hRequest, data, size);
+        if (!gotData)
+        {
+            Debug.LogError("Failed to get HTTP response body data");
+            return;
+        }
+
+        string response = System.Text.Encoding.UTF8.GetString(data);
+        Debug.Log("HTTP Response: " + response);
+
+        // Process response JSON here
+    }
+}

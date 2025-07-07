@@ -2,7 +2,8 @@
     "name": "QG.Managers.Economy",
     "rootNamespace": "QG.Managers.Economy",
     "references": [
-        "GUID:d888a2820ba200b4fa44056916104282"
+        "GUID:d888a2820ba200b4fa44056916104282",
+        "GUID:41524c21c95e5fe4dbc5b48bd21995a4"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

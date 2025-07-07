@@ -28,7 +28,7 @@ namespace QG.Managers.Economy.Transactions
             return new CurrencyValue(Amount).GetStringValue();
         }
 
-        public override bool IsPossible(ICurrencyHandler sender) => true;
+        public override bool IsPossible(ICurrencyHandler sender) => Currency.IsPossible(Amount, sender);
         public override Transaction GetCTCTransaction()
         {
             return new RewardTransaction

@@ -69,8 +69,8 @@ public class GenericPopUp<TSettings> : MonoBehaviour where TSettings : PopUpData
         buttonData.text.text = settings.Text;
         buttonData.text.gameObject.SetActive(!string.IsNullOrEmpty(settings.Text));
 
-        buttonData.Icon.sprite = settings.Icon;
-        buttonData.Icon.gameObject.SetActive(settings.Icon != null);
+        buttonData.Icon.sprite = settings.Icon();
+        buttonData.Icon.gameObject.SetActive(settings.Icon() != null);
 
         buttonData.LayoutGroup.reverseArrangement = settings.IsIconOnLeft;
 
@@ -148,14 +148,14 @@ public class PopUpButton
     public string Text;
     public Action OnPress;
     public Func<bool> IsInteractable;
-    public Sprite Icon;
+    public Func<Sprite> Icon;
     public bool IsIconOnLeft;
     private PopUpButton() { }
     public PopUpButton(
         PopUpButtonType type,
         string text,
         Action onPress,
-        Sprite icon = default,
+        Func<Sprite> icon = default,
         bool isIconOnLeft = false,
         Func<bool> isInteractable = default)
     {

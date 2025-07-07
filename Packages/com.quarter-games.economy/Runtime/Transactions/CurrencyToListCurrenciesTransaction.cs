@@ -2,6 +2,7 @@ using QG.Managers.Economy;
 using QG.Managers.Economy.Transactions;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Numerics;
 using UnityEngine;
 
@@ -43,14 +44,7 @@ public class CurrencyToListCurrenciesTransaction : Transaction
 
     public override bool IsPossible(ICurrencyHandler sender)
     {
-        foreach (var currencyAndCost in CurrenciesAndCosts)
-        {
-            if (ReducedCurrency.GetAmount(sender) < currencyAndCost.Cost)
-            {
-                return false;
-            }
-        }
-        return true;
+        return ReducedCurrency.IsPossible(-Cost.ActualValue,sender) && CurrenciesAndCosts.All(x => x.Currency.IsPossible(Cost.ActualValue, sender));
     }
     public override Transaction GetCTCTransaction()
     {

@@ -26,7 +26,7 @@ namespace QG.Managers.Economy.Transactions
 
         public override void ExecuteSecond(ICurrencyHandler reciever)
         {
-            GainedCurrency.Increment(Gain,reciever);
+            GainedCurrency.Increment(Gain, reciever);
         }
 
         public override string GetCostValue()
@@ -44,6 +44,6 @@ namespace QG.Managers.Economy.Transactions
             };
         }
 
-        public override bool IsPossible(ICurrencyHandler sender) => ReducedCurrency.GetAmount(sender) >= Cost;
+        public override bool IsPossible(ICurrencyHandler sender) => ReducedCurrency.IsPossible(-Cost.ActualValue, sender);
     }
 }

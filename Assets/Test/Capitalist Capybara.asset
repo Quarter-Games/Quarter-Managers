@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: Capitalist Capybara
+  m_EditorClassIdentifier: Assembly-CSharp::AnimalData
+  ID: 17
+  Name: Capitalist Capybara
+  Description: Let's talk merger.
+  Level: 3
+  BaseTime: 15
+  CurrencyType: 1
+  CurrencyAmount: 20
+  Resource: 2
+  ResourceAmount: 25
+  Rewards: 0100000000000000

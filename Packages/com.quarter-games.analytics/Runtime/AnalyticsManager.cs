@@ -14,8 +14,7 @@ namespace QG.Managers.Analytics
         #region Static Methods
         async public static Task<PlayerConsentStatus> GetPlayerConsent()
         {
-
-            var status = await BasicSaveLoadManager.GetData(PlayerConsentKey, PlayerConsent);
+            var status = BasicSaveLoadManager.GetData(PlayerConsentKey, PlayerConsent);
             PlayerConsent = status;
             return status;
         }
@@ -31,7 +30,6 @@ namespace QG.Managers.Analytics
             if (Instance == null) return;
             if (PlayerConsent != PlayerConsentStatus.Granted) return;
             Instance.StartCoroutine(WaitForAnalyticsToStart(() => Instance.LogNewEvent(eventName, eventData)));
-            LogEvent(eventName, eventData);
         }
         public static void StartCollectingData()
         {

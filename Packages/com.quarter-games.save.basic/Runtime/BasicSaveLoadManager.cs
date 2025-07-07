@@ -253,24 +253,24 @@ namespace QG.Managers.SaveSystem.Basic
         #region Abstract Methods
 
         #region GetMethods
-        protected abstract int GetValue(string key, int defaultValue = 0);
-        protected abstract string GetValue(string key, string defaultValue = "");
-        protected abstract float GetValue(string key, float defaultValue = 0f);
-        protected abstract TEnum GetValue<TEnum>(string key, TEnum defaultValue = default, EnumSaveSetting saveType = EnumSaveSetting.AsString) where TEnum : Enum;
-        protected abstract BigInteger GetValue(string key, BigInteger defaultValue = default);
-        protected abstract bool GetValue(string key, bool defaultValue = false);
+        public abstract int GetValue(string key, int defaultValue = 0);
+        public abstract string GetValue(string key, string defaultValue = "");
+        public abstract float GetValue(string key, float defaultValue = 0f);
+        public abstract TEnum GetValue<TEnum>(string key, TEnum defaultValue = default, EnumSaveSetting saveType = EnumSaveSetting.AsString) where TEnum : Enum;
+        public abstract BigInteger GetValue(string key, BigInteger defaultValue = default);
+        public abstract bool GetValue(string key, bool defaultValue = false);
         #endregion
 
         #region SetMethods
-        protected abstract void SetValue(string key, int value);
-        protected abstract void SetValue(string key, float value);
-        protected abstract void SetValue(string key, string value);
-        protected abstract void SetValue<T>(string key, T value, EnumSaveSetting saveSetting = EnumSaveSetting.AsString) where T : Enum;
-        protected abstract void SetValue(string key, BigInteger value);
-        protected abstract void SetValue(string key, bool value);
-        protected abstract void SaveClusterImediate(object caller);
-        protected abstract void ClearAllData();
-        protected abstract void ClearData(string key);
+        public abstract void SetValue(string key, int value);
+        public abstract void SetValue(string key, float value);
+        public abstract void SetValue(string key, string value);
+        public abstract void SetValue<T>(string key, T value, EnumSaveSetting saveSetting = EnumSaveSetting.AsString) where T : Enum;
+        public abstract void SetValue(string key, BigInteger value);
+        public abstract void SetValue(string key, bool value);
+        public abstract void SaveClusterImediate(object caller);
+        public abstract void ClearAllData();
+        public abstract void ClearData(string key);
         #endregion
 
         #endregion
