@@ -1,0 +1,19 @@
+{
+    "name": "QG.Meta.Talents.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:0ca59eb45bac1b4488d98106082f4f50",
+        "GUID:58e09f0664a8f634aa3e37bda11b91ec"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -6,12 +6,10 @@ using UnityEngine;
 namespace QG.Managers.Analytics.UnityAnalytics
 {
     [AddComponentMenu("QG/Managers/Unity Analytics Manager")]
-    sealed internal class UnityAnalyticsManager : AnalyticsManager
+    internal class UnityAnalyticsManager : AnalyticsManager
     {
         [SerializeField] private bool _isReady = false;
         override public bool IsReady() => _isReady;
-        [SerializeField] PopUp ConsentPopUp;
-        [SerializeField] PopUpData PopUpSettings;
         public override void Init()
         {
             base.Init();
@@ -27,12 +25,8 @@ namespace QG.Managers.Analytics.UnityAnalytics
             if (await GetPlayerConsent() == PlayerConsentStatus.NotAsked) AskToConsent();
             else _isReady = true;
         }
-        public void AskToConsent()
+        public virtual void AskToConsent()
         {
-            PopUpSettings.LeftButton.OnPress = () => Consent(true);
-            PopUpSettings.RightButton.OnPress = () => Consent(false);
-            var popUp = Instantiate(ConsentPopUp, transform);
-            popUp.Init(PopUpSettings);
 
         }
         public void Consent(bool consent)

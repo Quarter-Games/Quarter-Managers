@@ -1,0 +1,22 @@
+{
+    "name": "QG.Meta.Talents.Core.UI",
+    "rootNamespace": "",
+    "references": [
+        "GUID:0ca59eb45bac1b4488d98106082f4f50",
+        "GUID:4a1cb1490dc4df8409b2580d6b44e75e",
+        "GUID:a6124051fecfe9c4ea50d79eb05db859",
+        "GUID:6055be8ebefd69e48b49212b09b47b2f",
+        "GUID:75469ad4d38634e559750d17036d5f7c",
+        "GUID:cf414061cae3a954baf92763590f3127",
+        "GUID:58e09f0664a8f634aa3e37bda11b91ec"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

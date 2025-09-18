@@ -1,0 +1,32 @@
+{
+  "name": "com.quarter-games.meta.talents",
+  "version": "1.0.0",
+  "displayName": "QG Talents",
+  "description": "This is talents system",
+  "unity": "2022.3",
+  "documentationUrl": "https://github.com/Quarter-Games/Quarter-Managers",
+  "changelogUrl": "https://github.com/Quarter-Games/Quarter-Managers",
+  "licensesUrl": "https://github.com/Quarter-Games/Quarter-Managers",
+  "keywords": [
+    "Tools",
+    "Template",
+    "Talents"
+  ],
+  "author": "Dendefo <daniek332@gmail.com> (https://github.com/Dendefo)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Quarter-Games/Quarter-Managers.git"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Quarter-Games/Quarter-Managers/issues"
+  },
+  "homepage": "https://github.com/Quarter-Games/Quarter-Managers#readme",
+  "hideInEditor": false,
+  "dependencies": {
+    "com.quarter-games.manager": "1.0.18",
+    "com.quarter-games.save.basic": "1.0.9",
+    "com.quarter-games.menu": "1.0.1",
+    "com.quarter-games.economy": "1.0.24"
+  }
+}
