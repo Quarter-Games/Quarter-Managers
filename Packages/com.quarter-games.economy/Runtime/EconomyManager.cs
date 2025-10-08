@@ -53,21 +53,21 @@ namespace QG.Managers.Economy
             if (Instance == null) LoadFallBackManager();
             return Instance.GetAmount(currency, handler);
         }
-        public static void IncrementCurrency(Currency currency, BigInteger amount, ICurrencyHandler handler)
+        public static void IncrementCurrency(Currency currency, BigInteger amount, ICurrencyHandler handler, bool SaveImediate = false)
         {
             if (Instance == null) LoadFallBackManager();
-            Instance.Increment(currency, amount, handler);
+            Instance.Increment(currency, amount, handler, SaveImediate);
         }
-        public static void DecrementCurrency(Currency currency, BigInteger amount, ICurrencyHandler handler)
+        public static void DecrementCurrency(Currency currency, BigInteger amount, ICurrencyHandler handler, bool SaveImediate = false)
         {
             if (Instance == null) LoadFallBackManager();
-            Instance.Decrement(currency, amount, handler);
+            Instance.Decrement(currency, amount, handler, SaveImediate);
         }
         #endregion
         #region Abstract Methods
         abstract public BigInteger GetAmount(Currency currency, ICurrencyHandler handler);
-        abstract public void Increment(Currency currency, BigInteger amount, ICurrencyHandler handler);
-        abstract public void Decrement(Currency currency, BigInteger amount, ICurrencyHandler handler);
+        abstract public void Increment(Currency currency, BigInteger amount, ICurrencyHandler handler, bool SaveImediate = false);
+        abstract public void Decrement(Currency currency, BigInteger amount, ICurrencyHandler handler, bool SaveImediate = false);
 
         public void SetCurrencyData(Currency currency, BigInteger amount)
         {

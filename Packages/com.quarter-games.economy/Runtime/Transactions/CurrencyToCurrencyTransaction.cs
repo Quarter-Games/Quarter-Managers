@@ -11,22 +11,22 @@ namespace QG.Managers.Economy.Transactions
         public Currency GainedCurrency;
         public SerializedBigInteger Gain;
 
-        public override void Execute(ICurrencyHandler sender, ICurrencyHandler reciever)
+        public override void Execute(ICurrencyHandler sender, ICurrencyHandler reciever, bool SaveImediate = false)
         {
             if (!IsPossible(sender)) return;
-            ReducedCurrency.Decrement(Cost, sender);
-            GainedCurrency.Increment(Gain, reciever);
+            ReducedCurrency.Decrement(Cost, sender, SaveImediate);
+            GainedCurrency.Increment(Gain, reciever, SaveImediate);
         }
 
-        public override void ExecuteFirst(ICurrencyHandler sender)
+        public override void ExecuteFirst(ICurrencyHandler sender, bool SaveImediate = false)
         {
             if (!IsPossible(sender)) return;
-            ReducedCurrency.Decrement(Cost, sender);
+            ReducedCurrency.Decrement(Cost, sender, SaveImediate);
         }
 
-        public override void ExecuteSecond(ICurrencyHandler reciever)
+        public override void ExecuteSecond(ICurrencyHandler reciever, bool SaveImediate = false)
         {
-            GainedCurrency.Increment(Gain, reciever);
+            GainedCurrency.Increment(Gain, reciever, SaveImediate);
         }
 
         public override string GetCostValue()

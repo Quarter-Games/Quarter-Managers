@@ -13,28 +13,28 @@ public class CurrencyToListCurrenciesTransaction : Transaction
     public SerializedBigInteger Cost;
 
     public List<CurrencyAndCost> CurrenciesAndCosts;
-    public override void Execute(ICurrencyHandler sender, ICurrencyHandler reciever)
+    public override void Execute(ICurrencyHandler sender, ICurrencyHandler reciever, bool SaveImediate = false)
     {
         if (!IsPossible(sender)) return;
-        ReducedCurrency.Decrement(Cost, sender);
+        ReducedCurrency.Decrement(Cost, sender, SaveImediate);
 
         foreach (var currencyAndCost in CurrenciesAndCosts)
         {
-            currencyAndCost.Currency.Increment(currencyAndCost.Cost, reciever);
+            currencyAndCost.Currency.Increment(currencyAndCost.Cost, reciever, SaveImediate);
         }
     }
 
-    public override void ExecuteFirst(ICurrencyHandler sender)
+    public override void ExecuteFirst(ICurrencyHandler sender, bool SaveImediate = false)
     {
         if (!IsPossible(sender)) return;
-        ReducedCurrency.Decrement(Cost, sender);
+        ReducedCurrency.Decrement(Cost, sender, SaveImediate);
     }
 
-    public override void ExecuteSecond(ICurrencyHandler reciever)
+    public override void ExecuteSecond(ICurrencyHandler reciever, bool SaveImediate = false)
     {
         foreach (var currencyAndCost in CurrenciesAndCosts)
         {
-            currencyAndCost.Currency.Increment(currencyAndCost.Cost, reciever);
+            currencyAndCost.Currency.Increment(currencyAndCost.Cost, reciever, SaveImediate);
         }
     }
     public override string GetCostValue()
@@ -44,7 +44,7 @@ public class CurrencyToListCurrenciesTransaction : Transaction
 
     public override bool IsPossible(ICurrencyHandler sender)
     {
-        return ReducedCurrency.IsPossible(-Cost.ActualValue,sender) && CurrenciesAndCosts.All(x => x.Currency.IsPossible(Cost.ActualValue, sender));
+        return ReducedCurrency.IsPossible(-Cost.ActualValue, sender) && CurrenciesAndCosts.All(x => x.Currency.IsPossible(Cost.ActualValue, sender));
     }
     public override Transaction GetCTCTransaction()
     {

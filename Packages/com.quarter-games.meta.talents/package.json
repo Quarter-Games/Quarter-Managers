@@ -1,6 +1,6 @@
 {
   "name": "com.quarter-games.meta.talents",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "displayName": "QG Talents",
   "description": "This is talents system",
   "unity": "2022.3",
@@ -27,6 +27,6 @@
     "com.quarter-games.manager": "1.0.18",
     "com.quarter-games.save.basic": "1.0.9",
     "com.quarter-games.menu": "1.0.1",
-    "com.quarter-games.economy": "1.0.24"
+    "com.quarter-games.economy": "1.0.25"
   }
 }

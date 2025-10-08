@@ -8,19 +8,19 @@ namespace QG.Managers.Economy.Transactions
         public Currency Currency;
         public SerializedBigInteger Amount;
 
-        public override void Execute(ICurrencyHandler sender, ICurrencyHandler reciever)
+        public override void Execute(ICurrencyHandler sender, ICurrencyHandler reciever, bool SaveImediate = false)
         {
-            Currency.Increment(Amount, reciever);
+            Currency.Increment(Amount, reciever, SaveImediate);
         }
 
-        public override void ExecuteFirst(ICurrencyHandler sender)
+        public override void ExecuteFirst(ICurrencyHandler sender, bool SaveImediate = false)
         {
             return;
         }
 
-        public override void ExecuteSecond(ICurrencyHandler reciever)
+        public override void ExecuteSecond(ICurrencyHandler reciever, bool SaveImediate = false)
         {
-            Currency.Increment(Amount, reciever);
+            Currency.Increment(Amount, reciever, SaveImediate);
         }
 
         public override string GetCostValue()

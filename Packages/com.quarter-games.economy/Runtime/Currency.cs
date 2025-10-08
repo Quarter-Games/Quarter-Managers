@@ -18,14 +18,14 @@ namespace QG.Managers.Economy
         public SerializedBigInteger MaxAmount;
         public BigInteger GetAmount(ICurrencyHandler handler = null) => EconomyManager.GetCurrencyAmount(this, handler);
         public string GetAmountString(ICurrencyHandler handler = null) => new CurrencyValue(EconomyManager.GetCurrencyAmount(this, handler)).GetStringValue();
-        virtual public void Increment(BigInteger amount, ICurrencyHandler handler = null)
+        virtual public void Increment(BigInteger amount, ICurrencyHandler handler = null, bool SaveImediate = false)
         {
-            EconomyManager.IncrementCurrency(this, amount, handler);
+            EconomyManager.IncrementCurrency(this, amount, handler, SaveImediate);
             OnCurrencyChanged?.Invoke(this, amount);
         }
-        virtual public void Decrement(BigInteger amount, ICurrencyHandler handler = null)
+        virtual public void Decrement(BigInteger amount, ICurrencyHandler handler = null, bool SaveImediate = false)
         {
-            EconomyManager.DecrementCurrency(this, amount, handler);
+            EconomyManager.DecrementCurrency(this, amount, handler, SaveImediate);
             OnCurrencyChanged?.Invoke(this, -amount);
         }
         [ContextMenu("Log values")]

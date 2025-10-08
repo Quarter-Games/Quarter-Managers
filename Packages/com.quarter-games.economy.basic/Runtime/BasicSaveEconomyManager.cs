@@ -9,10 +9,10 @@ namespace QG.Managers.Economy.BasicSave
     [AddComponentMenu("QG/Managers/Basic Economy Manager")]
     sealed internal class BasicSaveEconomyManager : EconomyManager
     {
-        public override void Decrement(Currency currency, BigInteger amount, ICurrencyHandler handler)
+        public override void Decrement(Currency currency, BigInteger amount, ICurrencyHandler handler, bool SaveImediate = false)
         {
             if (handler == null) handler = this;
-            BasicSaveLoadManager.SetData(handler.UniqueID + currency.currencyID, GetAmount(currency, handler) - amount, handler);
+            BasicSaveLoadManager.SetData(handler.UniqueID + currency.currencyID, GetAmount(currency, handler) - amount, handler, SaveImediate);
         }
 
         public override BigInteger GetAmount(Currency currency, ICurrencyHandler handler)
@@ -21,10 +21,10 @@ namespace QG.Managers.Economy.BasicSave
             return BasicSaveLoadManager.GetData(handler.UniqueID + currency.currencyID, currency.StartingAmount, handler);
         }
 
-        public override void Increment(Currency currency, BigInteger amount, ICurrencyHandler handler)
+        public override void Increment(Currency currency, BigInteger amount, ICurrencyHandler handler, bool SaveImediate = false)
         {
             if (handler == null) handler = this;
-            BasicSaveLoadManager.SetData(handler.UniqueID + currency.currencyID, GetAmount(currency, handler) + amount, handler);
+            BasicSaveLoadManager.SetData(handler.UniqueID + currency.currencyID, GetAmount(currency, handler) + amount, handler, SaveImediate);
         }
 
         public override bool IsReady() => true;
