@@ -40,8 +40,8 @@ public class TalentPopUp : MonoBehaviour
     {
         if (currentTransaction != null && currentTransaction.IsPossible(null))
         {
-            currentTransaction.Execute(null, null);
             TalentData.Unlock();
+            currentTransaction.Execute(null, null);
             BuyButton.interactable = false;
         }
         gameObject.SetActive(false);
