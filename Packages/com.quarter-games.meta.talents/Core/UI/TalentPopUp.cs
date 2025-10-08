@@ -42,6 +42,7 @@ public class TalentPopUp : MonoBehaviour
         {
             TalentData.Unlock();
             currentTransaction.Execute(null, null);
+            BasicSaveLoadManager.SaveAllClusters();
             BuyButton.interactable = false;
         }
         gameObject.SetActive(false);
