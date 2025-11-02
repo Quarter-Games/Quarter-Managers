@@ -1,6 +1,6 @@
 {
   "name": "com.quarter-games.menu",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "displayName": "QG Menu",
   "description": "This is system for main menu and meta screens",
   "unity": "2022.3",
@@ -10,7 +10,7 @@
   "keywords": [
     "Tools",
     "Template",
-    "Loading Scree",
+    "Loading Screen",
     "Menu"
   ],
   "author": "Dendefo <daniek332@gmail.com> (https://github.com/Dendefo)",

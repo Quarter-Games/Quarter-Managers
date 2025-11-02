@@ -14,6 +14,7 @@ public class MainMenuToolbarButton : MonoBehaviour
     [SerializeField] Canvas OverrideSortingCanvas;
     [SerializeField] GameObject Notification;
     MainMenuScreenData _mainMenuScreenData;
+    public MainMenuScreenData MainMenuScreen=> _mainMenuScreenData;
     IMenuScreenManager _buttonManager;
     private void OnEnable()
     {

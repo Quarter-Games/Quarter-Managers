@@ -1,20 +1,19 @@
-using System;
+﻿using System;
 
 namespace QG.Managers.Economy.Transactions
 {
     [Serializable]
-    public class CurrencyToCurrencyTransaction : Transaction
+    public class CurrencyToActionTransaction : Transaction
     {
         public Currency ReducedCurrency;
         public SerializedBigInteger Cost;
-        public Currency GainedCurrency;
-        public SerializedBigInteger Gain;
+        public Action GainedAction;
 
         public override void Execute(ICurrencyHandler sender, ICurrencyHandler reciever, bool SaveImediate = false)
         {
             if (!IsPossible(sender)) return;
             ReducedCurrency.Decrement(Cost, sender, SaveImediate);
-            GainedCurrency.Increment(Gain, reciever, SaveImediate);
+            GainedAction?.Invoke();
         }
 
         public override void ExecuteFirst(ICurrencyHandler sender, bool SaveImediate = false)
@@ -25,7 +24,7 @@ namespace QG.Managers.Economy.Transactions
 
         public override void ExecuteSecond(ICurrencyHandler reciever, bool SaveImediate = false)
         {
-            GainedCurrency.Increment(Gain, reciever, SaveImediate);
+            GainedAction?.Invoke();
         }
 
         public override string GetCostValue()
@@ -34,12 +33,11 @@ namespace QG.Managers.Economy.Transactions
         }
         public override Transaction GetCTCTransaction()
         {
-            return new CurrencyToCurrencyTransaction
+            return new CurrencyToActionTransaction
             {
                 Cost = Cost,
                 ReducedCurrency = ReducedCurrency,
-                GainedCurrency = ReducedCurrency,
-                Gain = Cost
+                GainedAction = GainedAction
             };
         }
 
